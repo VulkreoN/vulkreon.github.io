@@ -117,6 +117,21 @@
             font-weight: 500;
             margin: 0.25rem;
         }
+        .youtube-embed {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            width: 100%;
+            border-radius: 0.5rem;
+        }
+        .youtube-embed iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
     </style>
 </head>
 <body>
@@ -200,18 +215,43 @@
         <div class="content-container">
             <h2 class="section-title">Projets Personnels</h2>
             <div class="grid md:grid-cols-2 gap-8">
+
+                <div class="project-card md:col-span-2 p-6 rounded-lg">
+                    <h3 class="job-title mb-2">Laval Game Jam 2024</h3>
+                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+                        <div>
+                            <p class="text-gray-400 mb-4">Jeu en Réalité Augmentée (AR) développé en 48h sur le thème de l'accessibilité. Notre équipe a remporté le premier prix. Le projet est un RPG en monde ouvert utilisant les capacités de l'Hololens 2, avec des interactions via suivi du regard, reconnaissance gestuelle et vocale pour lancer des sorts.</p>
+                            <div><span class="pill">Unity</span><span class="pill">C#</span><span class="pill">AR</span><span class="pill">Hololens 2</span><span class="pill">Game Jam</span></div>
+                             <a href="https://github.com/VulkreoN/Laval-Game-Jam" target="_blank" class="inline-block mt-4 text-blue-400 hover:underline">Voir le projet sur GitHub <i class="fas fa-arrow-right ml-1"></i></a>
+                        </div>
+                        <div class="youtube-embed">
+                            <iframe src="https://www.youtube.com/embed/kYdeGHYo-d4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="https://github.com/VulkreoN/Epitech-RPG" target="_blank" class="block project-card p-6 rounded-lg">
+                    <h3 class="job-title mb-2">Epitech RPG</h3>
+                    <p class="text-gray-400 mb-4">Un jeu de rôle en 2D complet développé en C, incluant un moteur de jeu, un système de quêtes, des combats...</p>
+                    <div><span class="pill">C</span><span class="pill">CSFML</span><span class="pill">Game Dev</span></div>
+                </a>
+                 <a href="https://github.com/VulkreoN/Pokedex-Flutter" target="_blank" class="block project-card p-6 rounded-lg">
+                    <h3 class="job-title mb-2">Pokédex Flutter</h3>
+                    <p class="text-gray-400 mb-4">Une application mobile cross-platform qui répertorie tous les Pokémon de Pokémon Go ainsi que leurs variations, avec leurs statistiques, en utilisant une API publique (PokeAPI).</p>
+                    <div><span class="pill">Flutter</span><span class="pill">Dart</span><span class="pill">Mobile</span><span class="pill">API</span></div>
+                </a>
                 <a href="https://github.com/VulkreoN/R-Type" target="_blank" class="block project-card p-6 rounded-lg">
-                    <h3 class="job-title mb-2">R-Type Clone</h3>
+                    <h3 class="job-title mb-2">R-Type</h3>
                     <p class="text-gray-400 mb-4">Un jeu de tir coopératif à 4 joueurs basé sur le classique R-Type, développé en C++ avec un focus sur les performances et le réseau.</p>
                     <div><span class="pill">C++</span><span class="pill">Networking</span><span class="pill">SFML</span></div>
                 </a>
-                <a href="https://github.com/VulkreoN/Arcade" target="_blank" class="block project-card p-6 rounded-lg">
+                <a href="https://github.com/VulkreoN/Arcade-Epi" target="_blank" class="block project-card p-6 rounded-lg">
                     <h3 class="job-title mb-2">Arcade</h3>
                     <p class="text-gray-400 mb-4">Une borne d'arcade logicielle en C++ permettant de charger dynamiquement des jeux et des bibliothèques graphiques (SFML, SDL2, NCURSES).</p>
                     <div><span class="pill">C++</span><span class="pill">Dynamic Loading</span><span class="pill">Game Dev</span></div>
                 </a>
-                <a href="https://github.com/VulkreoN/Dashboard" target="_blank" class="block project-card p-6 rounded-lg">
-                    <h3 class="job-title mb-2">Dashboard Web</h3>
+                <a href="https://github.com/VulkreoN/Area" target="_blank" class="block project-card p-6 rounded-lg">
+                    <h3 class="job-title mb-2">Area</h3>
                     <p class="text-gray-400 mb-4">Un tableau de bord web interactif qui connecte divers services tiers via des widgets personnalisables. Développé avec React et Node.js.</p>
                     <div><span class="pill">React</span><span class="pill">Node.js</span><span class="pill">API</span></div>
                 </a>
