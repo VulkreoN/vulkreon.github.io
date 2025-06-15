@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hakim Redjem - Portfolio Développeur</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #111827;
+            color: #e5e7eb;
+            margin: 0;
+            overflow: hidden;
+        }
+        .page {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            overflow-y: auto;
+            padding: 6rem 4rem 4rem 4rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s ease-in-out;
+        }
+        .page.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(17, 24, 39, 0.5);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+        }
+        nav a {
+            color: #d1d5db;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        nav a.active, nav a:hover {
+            background-color: #3b82f6;
+            color: #fff;
+        }
+        .content-container {
+            max-width: 900px;
+        }
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 2rem;
+        }
+        .job-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #fff;
+        }
+        .company-info {
+            color: #9ca3af;
+            margin-bottom: 0.5rem;
+        }
+        .skill-card {
+            background-color: rgba(31, 41, 55, 0.5);
+            transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
+        }
+        .skill-card:hover {
+            transform: scale(1.05);
+            background-color: rgba(55, 65, 81, 0.7);
+        }
+        .project-card {
+            background-color: rgba(31, 41, 55, 0.5);
+            transition: transform 0.3s ease-in-out;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+        .pill {
+            display: inline-block;
+            background-color: #374151;
+            color: #e5e7eb;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="text-xl font-bold">Hakim Redjem</div>
+        <div>
+            <a href="#accueil" class="nav-link active">Accueil</a>
+            <a href="#experiences" class="nav-link">Expériences</a>
+            <a href="#projets" class="nav-link">Projets</a>
+            <a href="#competences" class="nav-link">Compétences</a>
+            <a href="#formation" class="nav-link">Formation</a>
+        </div>
+    </nav>
+
+    <div id="three-container"></div>
+
+    <div id="page-accueil" class="page active">
+        <div class="content-container h-full flex flex-col justify-center">
+            <h1 class="text-6xl font-extrabold text-white">Bonjour, je suis Hakim Redjem.</h1>
+            <p class="text-2xl text-gray-300 mt-4">Un développeur logiciel polyvalent passionné par les nouvelles technologies, la 3D et la résolution de problèmes complexes.</p>
+            <div class="mt-8 flex space-x-6 text-gray-300">
+                <a href="mailto:hakim.redjem@epitech.eu" class="hover:text-blue-400 flex items-center gap-2 text-lg"><i class="fas fa-envelope fa-fw"></i> Email</a>
+                <a href="https://www.linkedin.com/in/hakim-redjem" target="_blank" class="hover:text-blue-400 flex items-center gap-2 text-lg"><i class="fab fa-linkedin fa-fw"></i> LinkedIn</a>
+                <a href="https://github.com/VulkreoN" target="_blank" class="hover:text-blue-400 flex items-center gap-2 text-lg"><i class="fab fa-github fa-fw"></i> GitHub</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="page-experiences" class="page">
+        <div class="content-container">
+            <h2 class="section-title">Expériences Professionnelles</h2>
+            <div class="space-y-12">
+                <article class="flex items-start gap-8">
+                    <div class="w-24 h-24 flex-shrink-0 bg-white/10 rounded-lg p-2 flex items-center justify-center">
+                        <img src="https://placehold.co/100x100/ffffff/1e293b?text=Medinbox" alt="Logo de Medinbox" class="h-16 w-16 object-contain rounded-md">
+                    </div>
+                    <div>
+                        <h3 class="job-title">Stagiaire Recherche & Développement IA</h3>
+                        <p class="company-info">Medinbox, Toulouse | Avril - Août 2023</p>
+                        <ul class="list-disc list-inside space-y-2 text-gray-300">
+                            <li>Conception et développement d'un modèle ASR (PyTorch) pour l'analyse de vidéos chirurgicales.</li>
+                            <li>Création d'une interface web (Angular, C# ASP.NET, Python) et intégration d'un chatbot.</li>
+                        </ul>
+                    </div>
+                </article>
+                <article class="flex items-start gap-8">
+                     <div class="w-24 h-24 flex-shrink-0 bg-white/10 rounded-lg p-2 flex items-center justify-center">
+                        <img src="https://placehold.co/100x100/ffffff/e6002b?text=BPCE-IT" alt="Logo de BPCE-IT" class="h-16 w-16 object-contain rounded-md">
+                    </div>
+                    <div>
+                        <h3 class="job-title">Stagiaire Développeur Client Lourd C#</h3>
+                        <p class="company-info">BPCE-IT, Toulouse | Juillet - Décembre 2021</p>
+                        <ul class="list-disc list-inside space-y-2 text-gray-300">
+                            <li>Développement Full-Stack en C# .NET du logiciel interne "Power1o".</li>
+                            <li>Refonte de l'UI et interfaçage avec les API ServiceNow, AirWatch, et SharePoint.</li>
+                        </ul>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+
+    <div id="page-projets" class="page">
+        <div class="content-container">
+            <h2 class="section-title">Projets Personnels</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <a href="https://github.com/VulkreoN/R-Type" target="_blank" class="block project-card p-6 rounded-lg">
+                    <h3 class="job-title mb-2">R-Type Clone</h3>
+                    <p class="text-gray-400 mb-4">Un jeu de tir coopératif à 4 joueurs basé sur le classique R-Type, développé en C++ avec un focus sur les performances et le réseau.</p>
+                    <div><span class="pill">C++</span><span class="pill">Networking</span><span class="pill">SFML</span></div>
+                </a>
+                <a href="https://github.com/VulkreoN/Arcade" target="_blank" class="block project-card p-6 rounded-lg">
+                    <h3 class="job-title mb-2">Arcade</h3>
+                    <p class="text-gray-400 mb-4">Une borne d'arcade logicielle en C++ permettant de charger dynamiquement des jeux et des bibliothèques graphiques (SFML, SDL2, NCURSES).</p>
+                    <div><span class="pill">C++</span><span class="pill">Dynamic Loading</span><span class="pill">Game Dev</span></div>
+                </a>
+                <a href="https://github.com/VulkreoN/Dashboard" target="_blank" class="block project-card p-6 rounded-lg">
+                    <h3 class="job-title mb-2">Dashboard Web</h3>
+                    <p class="text-gray-400 mb-4">Un tableau de bord web interactif qui connecte divers services tiers via des widgets personnalisables. Développé avec React et Node.js.</p>
+                    <div><span class="pill">React</span><span class="pill">Node.js</span><span class="pill">API</span></div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div id="page-competences" class="page">
+        <div class="content-container">
+            <h2 class="section-title">Compétences Techniques</h2>
+            <div class="mt-8">
+                <h3 class="text-2xl font-semibold mb-6 text-white">Langages</h3>
+                <div id="langages-container" class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-6 text-center">
+                    <!-- Les logos des langages seront peuplés ici -->
+                </div>
+            </div>
+            <div class="mt-12">
+                <h3 class="text-2xl font-semibold mb-6 text-white">Frameworks & Bibliothèques</h3>
+                <div id="frameworks-container" class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-6 text-center">
+                    <!-- Les logos des frameworks seront peuplés ici -->
+                </div>
+            </div>
+            <div class="mt-12">
+                <h3 class="text-2xl font-semibold mb-6 text-white">Outils & Plateformes</h3>
+                <div id="outils-container" class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-6 text-center">
+                    <!-- Les logos des outils seront peuplés ici -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="page-formation" class="page">
+        <div class="content-container">
+            <h2 class="section-title">Formation</h2>
+            <div class="space-y-10">
+                <article>
+                    <h3 class="job-title">Master en Technologies de l'Information</h3>
+                    <p class="company-info">EPITECH, Toulouse | 2020 - 2025</p>
+                    <p class="text-gray-300">Cursus intensif en 5 ans basé sur une pédagogie par projets, développant une forte expertise technique et une grande capacité d'adaptation. L'accent est mis sur l'innovation et la réalisation de projets complexes en équipe.</p>
+                </article>
+                <article>
+                    <h3 class="job-title">Échange Universitaire</h3>
+                    <p class="company-info">Shibaura Institute of Technology, Tokyo | 2024</p>
+                    <p class="text-gray-300">Semestre d'étude au sein d'une des principales universités technologiques du Japon, avec des cours axés sur l'ingénierie et les technologies émergentes. Immersion culturelle et linguistique intensive.</p>
+                </article>
+                 <article>
+                    <h3 class="job-title">Baccalauréat STI2D (Mention Bien)</h3>
+                    <p class="company-info">Lycée Maine de Biran, Bergerac | 2020</p>
+                    <p class="text-gray-300">Option SIN (Systèmes d'Information et Numérique), offrant une première approche solide de l'informatique, de l'électronique et des réseaux.</p>
+                </article>
+            </div>
+        </div>
+    </div>
+
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"
+            }
+        }
+    </script>
+    <script type="module">
+        import * as THREE from 'three';
+
+        let scene, camera, renderer, clock;
+        const threeContainer = document.getElementById('three-container');
+        let currentAnimationId = 0;
+        const mouse = new THREE.Vector2();
+        const raycaster = new THREE.Raycaster();
+
+        function initBaseScene() {
+            scene = new THREE.Scene();
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            renderer = new THREE.WebGLRenderer({ antialias: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            threeContainer.innerHTML = '';
+            threeContainer.appendChild(renderer.domElement);
+            clock = new THREE.Clock();
+        }
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        window.addEventListener('mousemove', (event) => {
+            mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+            mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+        });
+
+        const animations = {
+            accueil: {
+                particles: null,
+                init: () => {
+                    const particlesGeometry = new THREE.BufferGeometry();
+                    const count = 5000;
+                    const positions = new Float32Array(count * 3);
+                    for(let i = 0; i < count * 3; i++) positions[i] = (Math.random() - 0.5) * 20;
+                    particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+                    const particlesMaterial = new THREE.PointsMaterial({ size: 0.02, sizeAttenuation: true, color: 0x3b82f6 });
+                    animations.accueil.particles = new THREE.Points(particlesGeometry, particlesMaterial);
+                    scene.add(animations.accueil.particles);
+                    camera.position.z = 5;
+                },
+                animate: () => {
+                    const elapsedTime = clock.getElapsedTime();
+                    animations.accueil.particles.rotation.y = elapsedTime * 0.1;
+                    camera.position.x += (mouse.x * 2 - camera.position.x) * 0.02;
+                    camera.position.y += (-mouse.y * 2 - camera.position.y) * 0.02;
+                    camera.lookAt(scene.position);
+                }
+            },
+            experiences: {
+                particles: null,
+                init: () => {
+                    const particleCount = 300;
+                    const positions = new Float32Array(particleCount * 3);
+                    const velocities = new Float32Array(particleCount * 3);
+                    for (let i = 0; i < particleCount; i++) {
+                        positions[i * 3 + 0] = THREE.MathUtils.randFloatSpread(20);
+                        positions[i * 3 + 1] = THREE.MathUtils.randFloatSpread(20);
+                        positions[i * 3 + 2] = THREE.MathUtils.randFloatSpread(20);
+                        velocities[i * 3 + 0] = 0;
+                        velocities[i * 3 + 1] = 0;
+                        velocities[i * 3 + 2] = 0;
+                    }
+                    const geometry = new THREE.BufferGeometry();
+                    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+                    geometry.setAttribute('velocity', new THREE.BufferAttribute(velocities, 3));
+
+                    const material = new THREE.PointsMaterial({ color: 0x60a5fa, size: 0.1, transparent: true, blending: THREE.AdditiveBlending, sizeAttenuation: true });
+                    animations.experiences.particles = new THREE.Points(geometry, material);
+                    scene.add(animations.experiences.particles);
+                    camera.position.z = 12;
+                },
+                animate: () => {
+                    const particles = animations.experiences.particles;
+                    const positions = particles.geometry.attributes.position.array;
+                    const velocities = particles.geometry.attributes.velocity.array;
+
+                    raycaster.setFromCamera(mouse, camera);
+                    const mouseVector = new THREE.Vector3(mouse.x, mouse.y, 0.5).unproject(camera);
+
+                    for (let i = 0; i < positions.length / 3; i++) {
+                        const i3 = i * 3;
+                        const particlePos = new THREE.Vector3(positions[i3], positions[i3 + 1], positions[i3 + 2]);
+
+                        // Mouse repulsion force
+                        const dist = particlePos.distanceTo(mouseVector);
+                        if (dist < 3) {
+                            const force = (3 - dist) * 0.01;
+                            const repulsion = new THREE.Vector3().subVectors(particlePos, mouseVector).normalize().multiplyScalar(force);
+                            velocities[i3] += repulsion.x;
+                            velocities[i3 + 1] += repulsion.y;
+                            velocities[i3 + 2] += repulsion.z;
+                        }
+
+                        // Damping
+                        velocities[i3] *= 0.95;
+                        velocities[i3 + 1] *= 0.95;
+                        velocities[i3 + 2] *= 0.95;
+
+                        positions[i3] += velocities[i3];
+                        positions[i3 + 1] += velocities[i3 + 1];
+                        positions[i3 + 2] += velocities[i3 + 2];
+                    }
+
+                    particles.geometry.attributes.position.needsUpdate = true;
+                    particles.rotation.y += 0.0005;
+                }
+            },
+            projets: {
+                mesh: null,
+                init: () => {
+                    const geometry = new THREE.SphereGeometry(3, 32, 32);
+                    const material = new THREE.MeshBasicMaterial({color: 0xec4899, wireframe: true});
+                    animations.projets.mesh = new THREE.Mesh(geometry, material);
+                    scene.add(animations.projets.mesh);
+                    camera.position.z = 10;
+                },
+                animate: () => {
+                    animations.projets.mesh.rotation.x += 0.001;
+                    animations.projets.mesh.rotation.y += 0.002;
+                }
+            },
+            competences: {
+                group: null,
+                lights: [],
+                init: () => {
+                    animations.competences.group = new THREE.Group();
+                    const material = new THREE.MeshStandardMaterial({ color: 0x4f46e5, roughness: 0.5, metalness: 0.1 });
+                    const boxes = [];
+                    const maxLevel = 3;
+                    const baseSize = 9;
+
+                    function generateSponge(level, size, position) {
+                        if (level === 0) {
+                            boxes.push(new THREE.Matrix4().compose(position, new THREE.Quaternion(), new THREE.Vector3(1,1,1)));
+                            return;
+                        }
+                        const newSize = size / 3;
+                        for (let x=-1; x<=1; x++) for (let y=-1; y<=1; y++) for (let z=-1; z<=1; z++) {
+                            if (Math.abs(x) + Math.abs(y) + Math.abs(z) > 1) {
+                                generateSponge(level-1, newSize, new THREE.Vector3(position.x+x*newSize, position.y+y*newSize, position.z+z*newSize));
+                            }
+                        }
+                    }
+                    generateSponge(maxLevel, baseSize, new THREE.Vector3(0,0,0));
+                    const boxSize = baseSize / Math.pow(3, maxLevel);
+                    const geometry = new THREE.BoxGeometry(boxSize, boxSize, boxSize);
+                    const instancedMesh = new THREE.InstancedMesh(geometry, material, boxes.length);
+                    boxes.forEach((matrix, i) => instancedMesh.setMatrixAt(i, matrix));
+                    animations.competences.group.add(instancedMesh);
+                    scene.add(animations.competences.group);
+
+                    animations.competences.lights = [];
+                    for(let i=0; i<4; i++){
+                        const light = new THREE.PointLight(0xffffff, 5, 15);
+                        light.position.set((Math.random()-0.5)*baseSize*0.6, (Math.random()-0.5)*baseSize*0.6, (Math.random()-0.5)*baseSize*0.6);
+                        animations.competences.group.add(light);
+                        animations.competences.lights.push(light);
+                    }
+                    camera.position.set(0, 0, 15);
+                },
+                animate: () => {
+                    const elapsedTime = clock.getElapsedTime();
+                    camera.position.z -= 0.02;
+                    if(camera.position.z < -5) camera.position.z = 15;
+                    animations.competences.group.rotation.x = elapsedTime * 0.05;
+                    animations.competences.group.rotation.y = elapsedTime * 0.1;
+                    animations.competences.lights.forEach((light, i) => {
+                        light.position.x = Math.sin(elapsedTime*0.6*(i+1)) * 4;
+                        light.position.y = Math.cos(elapsedTime*0.4*(i+1)) * 4;
+                    });
+                }
+            },
+            formation: {
+                group: null,
+                init: () => {
+                    animations.formation.group = new THREE.Group();
+                    const material = new THREE.MeshBasicMaterial({ color: 0x8b5cf6, blending: THREE.AdditiveBlending, transparent: true, depthWrite: false, side: THREE.DoubleSide });
+                    for (let i = 0; i < 300; i++) {
+                        const geometry = new THREE.PlaneGeometry(0.5, 0.5);
+                        const mesh = new THREE.Mesh(geometry, material);
+                        mesh.position.set(THREE.MathUtils.randFloatSpread(15), THREE.MathUtils.randFloatSpread(15), THREE.MathUtils.randFloatSpread(15));
+                        mesh.rotation.set(Math.random()*Math.PI, Math.random()*Math.PI, Math.random()*Math.PI);
+                        animations.formation.group.add(mesh);
+                    }
+                    scene.add(animations.formation.group);
+                    camera.position.z = 5;
+                },
+                animate: () => {
+                    const elapsedTime = clock.getElapsedTime();
+                    camera.position.x = Math.sin(elapsedTime * 0.1) * 2;
+                    camera.lookAt(scene.position);
+                    animations.formation.group.rotation.y += 0.001;
+                }
+            }
+        };
+
+        function switchPage(hash) {
+            if (currentAnimationId) cancelAnimationFrame(currentAnimationId);
+            initBaseScene();
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+            scene.add(ambientLight);
+            const directionalLight = new THREE.DirectionalLight(0xffffff, 1.0);
+            directionalLight.position.set(5, 10, 7.5);
+            scene.add(directionalLight);
+
+            document.querySelector('.page.active')?.classList.remove('active');
+            document.querySelector(hash.replace('#', '#page-'))?.classList.add('active');
+            document.querySelector('.nav-link.active')?.classList.remove('active');
+            document.querySelector(`a[href="${hash}"]`)?.classList.add('active');
+
+            const animationKey = hash.substring(1);
+            if (animations[animationKey]) {
+                const anim = animations[animationKey];
+                anim.init();
+                function runAnimation() {
+                    anim.animate();
+                    renderer.render(scene, camera);
+                    currentAnimationId = requestAnimationFrame(runAnimation);
+                }
+                runAnimation();
+            }
+        }
+
+        const initialHash = window.location.hash || '#accueil';
+        switchPage(initialHash);
+        window.addEventListener('hashchange', () => switchPage(window.location.hash));
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const hash = e.target.getAttribute('href');
+                if (window.location.hash !== hash) window.location.hash = hash;
+            });
+        });
+
+        function populateSkills() {
+            const skills = {
+                langages: [
+                    { name: 'C#', icon: 'csharp/csharp-original.svg' },
+                    { name: 'C++', icon: 'cplusplus/cplusplus-original.svg' },
+                    { name: 'GLSL', icon: 'fas fa-microchip', isClass: true, isFa: true },
+                    { name: 'Java', icon: 'java/java-original.svg' },
+                    { name: 'JavaScript', icon: 'javascript/javascript-original.svg' },
+                    { name: 'Kotlin', icon: 'kotlin/kotlin-original.svg' },
+                    { name: 'PHP', icon: 'php/php-original.svg' },
+                    { name: 'Python', icon: 'python/python-original.svg' },
+                    { name: 'SQL', icon: 'fas fa-database', isClass: true, isFa: true },
+                    { name: 'Shell', icon: 'bash/bash-original.svg'},
+                    { name: 'Swift', icon: 'swift/swift-original.svg' }
+                ],
+                frameworks: [
+                    { name: 'Angular', icon: 'angularjs/angularjs-original.svg' },
+                    { name: 'ASP.NET', icon: 'dotnetcore/dotnetcore-original.svg' },
+                    { name: 'Next.js', icon: 'nextjs/nextjs-original.svg', invert: true },
+                    { name: 'Node.js', icon: 'nodejs/nodejs-original.svg' },
+                    { name: 'OpenGL', icon: 'opengl/opengl-original.svg' },
+                    { name: 'PyTorch', icon: 'pytorch/pytorch-original.svg' },
+                    { name: 'React Native', icon: 'react/react-original.svg' },
+                    { name: 'SDL2', icon: 'sdl/sdl-original.svg' },
+                    { name: 'SFML', icon: 'sfml/sfml-original.svg' },
+                    { name: 'TensorFlow', icon: 'tensorflow/tensorflow-original.svg' },
+                    { name: 'Three.js', icon: 'threejs/threejs-original.svg', invert: true },
+                    { name: 'Vue.js', icon: 'vuejs/vuejs-original.svg' }
+                ],
+                outils: [
+                    { name: 'Apache', icon: 'apache/apache-original-wordmark.svg' },
+                    { name: 'AWS', icon: 'amazonwebservices/amazonwebservices-original-wordmark.svg', invert: true },
+                    { name: 'Azure', icon: 'azure/azure-original.svg' },
+                    { name: 'Confluence', icon: 'confluence/confluence-original.svg' },
+                    { name: 'Docker', icon: 'docker/docker-original.svg' },
+                    { name: 'Figma', icon: 'figma/figma-original.svg' },
+                    { name: 'Firebase', icon: 'firebase/firebase-plain.svg' },
+                    { name: 'Git', icon: 'git/git-original.svg' },
+                    { name: 'Jenkins', icon: 'jenkins/jenkins-original.svg' },
+                    { name: 'Jira', icon: 'jira/jira-original.svg' },
+                    { name: 'Kubernetes', icon: 'kubernetes/kubernetes-plain.svg' },
+                    { name: 'Makefile', icon: 'fas fa-file-code', isClass: true, isFa: true },
+                    { name: 'MySQL', icon: 'mysql/mysql-original.svg' },
+                    { name: 'Nginx', icon: 'nginx/nginx-original.svg' },
+                    { name: 'PostgreSQL', icon: 'postgresql/postgresql-original.svg' }
+                ]
+            };
+
+            const langagesContainer = document.getElementById('langages-container');
+            const frameworksContainer = document.getElementById('frameworks-container');
+            const outilsContainer = document.getElementById('outils-container');
+
+            const createCard = (skill) => {
+                const card = document.createElement('div');
+                card.className = 'skill-card flex flex-col items-center justify-center p-4 rounded-lg';
+                if (skill.isClass && skill.isFa) {
+                    card.innerHTML = `<i class="${skill.icon} text-5xl h-14 w-14 mb-2 flex items-center justify-center text-gray-400"></i><span class="text-sm">${skill.name}</span>`;
+                } else if (skill.icon.endsWith('.svg')) {
+                    card.innerHTML = `<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${skill.icon}" alt="Logo de ${skill.name}" class="h-14 w-14 mb-2 ${skill.invert ? 'filter invert' : ''}"><span class="text-sm">${skill.name}</span>`;
+                }
+                return card;
+            };
+
+            if(langagesContainer) {
+                langagesContainer.innerHTML = '';
+                skills.langages.forEach(skill => langagesContainer.appendChild(createCard(skill)));
+            }
+            if(frameworksContainer) {
+                frameworksContainer.innerHTML = '';
+                skills.frameworks.forEach(skill => frameworksContainer.appendChild(createCard(skill)));
+            }
+            if(outilsContainer) {
+                outilsContainer.innerHTML = '';
+                skills.outils.forEach(skill => outilsContainer.appendChild(createCard(skill)));
+            }
+        }
+        populateSkills();
+
+    </script>
+</body>
+</html>
