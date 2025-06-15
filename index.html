@@ -22,10 +22,15 @@
             width: 100%;
             height: 100vh;
             overflow-y: auto;
-            padding: 6rem 4rem 4rem 4rem;
+            padding: 6rem 1rem 4rem 1rem;
             opacity: 0;
             pointer-events: none;
             transition: opacity 0.5s ease-in-out;
+        }
+        @media (min-width: 768px) {
+            .page {
+                padding: 6rem 4rem 4rem 4rem;
+            }
         }
         .page.active {
             opacity: 1;
@@ -36,13 +41,18 @@
             top: 0;
             left: 0;
             width: 100%;
-            padding: 1.5rem 4rem;
+            padding: 1rem 1.5rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
             background: rgba(17, 24, 39, 0.5);
             backdrop-filter: blur(10px);
             z-index: 100;
+        }
+         @media (min-width: 768px) {
+            nav {
+                 padding: 1.5rem 4rem;
+            }
         }
         nav a {
             color: #d1d5db;
@@ -58,12 +68,20 @@
         }
         .content-container {
             max-width: 900px;
+            margin: 0 auto;
         }
         .section-title {
-            font-size: 2.5rem;
+            font-size: 2rem;
             font-weight: 700;
             color: #fff;
             margin-bottom: 2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #374151;
+        }
+         @media (min-width: 768px) {
+            .section-title {
+                font-size: 2.5rem;
+            }
         }
         .job-title {
             font-size: 1.25rem;
@@ -104,22 +122,39 @@
 <body>
     <nav>
         <div class="text-xl font-bold">Hakim Redjem</div>
-        <div>
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex space-x-2">
             <a href="#accueil" class="nav-link active">Accueil</a>
             <a href="#experiences" class="nav-link">Expériences</a>
             <a href="#projets" class="nav-link">Projets</a>
             <a href="#competences" class="nav-link">Compétences</a>
             <a href="#formation" class="nav-link">Formation</a>
         </div>
+        <!-- Mobile Menu Button -->
+        <div class="md:hidden">
+            <button id="mobile-menu-button" class="text-white text-2xl">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
     </nav>
 
-    <div id="three-container"></div>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden fixed inset-0 bg-gray-900/90 z-50 flex flex-col items-center justify-center space-y-6 text-2xl">
+        <button id="mobile-menu-close-button" class="absolute top-6 right-6 text-4xl text-white">&times;</button>
+        <a href="#accueil" class="nav-link-mobile">Accueil</a>
+        <a href="#experiences" class="nav-link-mobile">Expériences</a>
+        <a href="#projets" class="nav-link-mobile">Projets</a>
+        <a href="#competences" class="nav-link-mobile">Compétences</a>
+        <a href="#formation" class="nav-link-mobile">Formation</a>
+    </div>
+
+    <div id="three-container" class="fixed top-0 left-0 -z-10"></div>
 
     <div id="page-accueil" class="page active">
         <div class="content-container h-full flex flex-col justify-center">
-            <h1 class="text-6xl font-extrabold text-white">Bonjour, je suis Hakim Redjem.</h1>
-            <p class="text-2xl text-gray-300 mt-4">Un développeur logiciel polyvalent passionné par les nouvelles technologies, la 3D et la résolution de problèmes complexes.</p>
-            <div class="mt-8 flex space-x-6 text-gray-300">
+            <h1 class="text-4xl md:text-6xl font-extrabold text-white">Bonjour, je suis Hakim Redjem.</h1>
+            <p class="text-xl md:text-2xl text-gray-300 mt-4">Un développeur logiciel polyvalent passionné par les nouvelles technologies, la 3D et la résolution de problèmes complexes.</p>
+            <div class="mt-8 flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6 text-gray-300">
                 <a href="mailto:hakim.redjem@epitech.eu" class="hover:text-blue-400 flex items-center gap-2 text-lg"><i class="fas fa-envelope fa-fw"></i> Email</a>
                 <a href="https://www.linkedin.com/in/hakim-redjem" target="_blank" class="hover:text-blue-400 flex items-center gap-2 text-lg"><i class="fab fa-linkedin fa-fw"></i> LinkedIn</a>
                 <a href="https://github.com/VulkreoN" target="_blank" class="hover:text-blue-400 flex items-center gap-2 text-lg"><i class="fab fa-github fa-fw"></i> GitHub</a>
@@ -131,7 +166,7 @@
         <div class="content-container">
             <h2 class="section-title">Expériences Professionnelles</h2>
             <div class="space-y-12">
-                <article class="flex items-start gap-8">
+                <article class="flex flex-col md:flex-row items-start gap-8">
                     <div class="w-24 h-24 flex-shrink-0 bg-white/10 rounded-lg p-2 flex items-center justify-center">
                         <img src="https://placehold.co/100x100/ffffff/1e293b?text=Medinbox" alt="Logo de Medinbox" class="h-16 w-16 object-contain rounded-md">
                     </div>
@@ -144,7 +179,7 @@
                         </ul>
                     </div>
                 </article>
-                <article class="flex items-start gap-8">
+                <article class="flex flex-col md:flex-row items-start gap-8">
                      <div class="w-24 h-24 flex-shrink-0 bg-white/10 rounded-lg p-2 flex items-center justify-center">
                         <img src="https://placehold.co/100x100/ffffff/e6002b?text=BPCE-IT" alt="Logo de BPCE-IT" class="h-16 w-16 object-contain rounded-md">
                     </div>
@@ -152,7 +187,7 @@
                         <h3 class="job-title">Stagiaire Développeur Client Lourd C#</h3>
                         <p class="company-info">BPCE-IT, Toulouse | Juillet - Décembre 2021</p>
                         <ul class="list-disc list-inside space-y-2 text-gray-300">
-                            <li>Développement Full-Stack en C# .NET du logiciel interne "Power1o".</li>
+                            <li>Développement Full-Stack en C# .NET du logiciel interne "Power10".</li>
                             <li>Refonte de l'UI et interfaçage avec les API ServiceNow, AirWatch, et SharePoint.</li>
                         </ul>
                     </div>
@@ -250,7 +285,7 @@
         function initBaseScene() {
             scene = new THREE.Scene();
             camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-            renderer = new THREE.WebGLRenderer({ antialias: true });
+            renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
             renderer.setSize(window.innerWidth, window.innerHeight);
             renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
             threeContainer.innerHTML = '';
@@ -259,6 +294,7 @@
         }
 
         window.addEventListener('resize', () => {
+            if (!renderer) return;
             camera.aspect = window.innerWidth / window.innerHeight;
             camera.updateProjectionMatrix();
             renderer.setSize(window.innerWidth, window.innerHeight);
@@ -326,7 +362,6 @@
                         const i3 = i * 3;
                         const particlePos = new THREE.Vector3(positions[i3], positions[i3 + 1], positions[i3 + 2]);
 
-                        // Mouse repulsion force
                         const dist = particlePos.distanceTo(mouseVector);
                         if (dist < 3) {
                             const force = (3 - dist) * 0.01;
@@ -336,7 +371,6 @@
                             velocities[i3 + 2] += repulsion.z;
                         }
 
-                        // Damping
                         velocities[i3] *= 0.95;
                         velocities[i3 + 1] *= 0.95;
                         velocities[i3 + 2] *= 0.95;
@@ -466,10 +500,24 @@
             }
         }
 
+        // --- Mobile Menu Logic ---
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenuCloseButton = document.getElementById('mobile-menu-close-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileNavLinks = document.querySelectorAll('.nav-link-mobile');
+
+        mobileMenuButton.addEventListener('click', () => mobileMenu.classList.remove('hidden'));
+        mobileMenuCloseButton.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+        });
+
+
         const initialHash = window.location.hash || '#accueil';
         switchPage(initialHash);
         window.addEventListener('hashchange', () => switchPage(window.location.hash));
-        document.querySelectorAll('.nav-link').forEach(link => {
+
+        document.querySelectorAll('.nav-link, .nav-link-mobile').forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
                 const hash = e.target.getAttribute('href');
