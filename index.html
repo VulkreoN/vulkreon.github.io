@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hakim Redjem - Portfolio Développeur</title>
+    <title>Hakim Redjem - Portfolio</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='100%25' x2='100%25' y2='0%25'%3E%3Cstop offset='0%25' stop-color='%238b5cf6'/%3E%3Cstop offset='100%25' stop-color='%2360a5fa'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M25 20 C20 20, 20 25, 20 25 V 75 C 20 80, 25 80, 25 80 H 30 V 55 H 60 L 80 75 C 85 80, 90 80, 90 75 V 65 L 70 50 L 90 35 V 25 C 90 20, 85 20, 80 25 L 60 40 H 30 V 25 C 30 20, 25 20, 25 20 Z' fill='url(%23grad)'/%3E%3C/svg%3E">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -65,6 +65,20 @@
         }
         nav a.active, nav a:hover {
             background-color: #3b82f6;
+            color: #fff;
+        }
+        .lang-switcher {
+            background: none;
+            border: 1px solid #374151;
+            color: #d1d5db;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .lang-switcher:hover {
+            background-color: #374151;
             color: #fff;
         }
         .content-container {
@@ -149,38 +163,37 @@
             </svg>
             <span class="text-xl font-bold hidden sm:inline">Hakim Redjem</span>
         </a>
-        <!-- Desktop Menu -->
-        <div class="hidden md:flex space-x-2">
-            <a href="#accueil" class="nav-link active">Accueil</a>
-            <a href="#experiences" class="nav-link">Expériences</a>
-            <a href="#projets" class="nav-link">Projets</a>
-            <a href="#competences" class="nav-link">Compétences</a>
-            <a href="#formation" class="nav-link">Formation</a>
+        <div class="hidden md:flex items-center space-x-4">
+            <a href="#accueil" class="nav-link active" data-translate-key="navHome">Accueil</a>
+            <a href="#experiences" class="nav-link" data-translate-key="navExperience">Expériences</a>
+            <a href="#projets" class="nav-link" data-translate-key="navProjects">Projets</a>
+            <a href="#competences" class="nav-link" data-translate-key="navSkills">Compétences</a>
+            <a href="#formation" class="nav-link" data-translate-key="navEducation">Formation</a>
+            <button id="lang-switcher" class="lang-switcher">EN</button>
         </div>
-        <!-- Mobile Menu Button -->
-        <div class="md:hidden">
+        <div class="md:hidden flex items-center gap-4">
+             <button id="lang-switcher-mobile" class="lang-switcher">EN</button>
             <button id="mobile-menu-button" class="text-white text-2xl">
                 <i class="fas fa-bars"></i>
             </button>
         </div>
     </nav>
     
-    <!-- Mobile Menu -->
     <div id="mobile-menu" class="hidden fixed inset-0 bg-gray-900/90 z-50 flex flex-col items-center justify-center space-y-6 text-2xl">
         <button id="mobile-menu-close-button" class="absolute top-6 right-6 text-4xl text-white">&times;</button>
-        <a href="#accueil" class="nav-link-mobile">Accueil</a>
-        <a href="#experiences" class="nav-link-mobile">Expériences</a>
-        <a href="#projets" class="nav-link-mobile">Projets</a>
-        <a href="#competences" class="nav-link-mobile">Compétences</a>
-        <a href="#formation" class="nav-link-mobile">Formation</a>
+        <a href="#accueil" class="nav-link-mobile" data-translate-key="navHomeMobile">Accueil</a>
+        <a href="#experiences" class="nav-link-mobile" data-translate-key="navExperienceMobile">Expériences</a>
+        <a href="#projets" class="nav-link-mobile" data-translate-key="navProjectsMobile">Projets</a>
+        <a href="#competences" class="nav-link-mobile" data-translate-key="navSkillsMobile">Compétences</a>
+        <a href="#formation" class="nav-link-mobile" data-translate-key="navEducationMobile">Formation</a>
     </div>
 
     <div id="three-container" class="fixed top-0 left-0 -z-10"></div>
 
     <div id="page-accueil" class="page active">
         <div class="content-container h-full flex flex-col justify-center">
-            <h1 class="text-4xl md:text-6xl font-extrabold text-white">Bonjour, je suis Hakim Redjem.</h1>
-            <p class="text-xl md:text-2xl text-gray-300 mt-4">Un développeur logiciel polyvalent passionné par les nouvelles technologies, la 3D et la résolution de problèmes complexes.</p>
+            <h1 class="text-4xl md:text-6xl font-extrabold text-white" data-translate-key="homeTitle">Bonjour, je suis Hakim Redjem.</h1>
+            <p class="text-xl md:text-2xl text-gray-300 mt-4" data-translate-key="homeSubtitle">Un développeur logiciel polyvalent passionné par les nouvelles technologies, la 3D et la résolution de problèmes complexes.</p>
             <div class="mt-8 flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6 text-gray-300">
                 <a href="mailto:hakim.redjem@epitech.eu" class="hover:text-blue-400 flex items-center gap-2 text-lg"><i class="fas fa-envelope fa-fw"></i> Email</a>
                 <a href="https://www.linkedin.com/in/hakim-redjem" target="_blank" class="hover:text-blue-400 flex items-center gap-2 text-lg"><i class="fab fa-linkedin fa-fw"></i> LinkedIn</a>
@@ -191,19 +204,19 @@
 
     <div id="page-experiences" class="page">
         <div class="content-container">
-            <h2 class="section-title">Expériences Professionnelles</h2>
+            <h2 class="section-title" data-translate-key="experienceTitle">Expériences Professionnelles</h2>
             <div class="space-y-12">
                 <article class="flex flex-col md:flex-row items-start gap-8">
                     <div class="w-24 h-24 flex-shrink-0 bg-white/10 rounded-lg p-2 flex items-center justify-center">
                         <img src="https://placehold.co/100x100/ffffff/1e293b?text=Medinbox" alt="Logo de Medinbox" class="h-16 w-16 object-contain rounded-md">
                     </div>
                     <div>
-                        <h3 class="job-title">Stagiaire Recherche & Développement IA</h3>
+                        <h3 class="job-title" data-translate-key="exp1Title">Stagiaire Recherche & Développement IA</h3>
                         <p class="company-info">Medinbox, Toulouse | Avril - Août 2023</p>
                         <ul class="list-disc list-inside space-y-2 text-gray-300">
-                            <li>Développement de solutions d'IA pour l'analyse de vidéos chirurgicales, incluant la reconnaissance et le masquage de l'identité des patients par computer vision.</li>
-                            <li>Création d'un pipeline ASR (Whisper ré-entraîné) pour extraire des métadonnées (interlocuteurs, tags, résumé) des enregistrements.</li>
-                            <li>Développement d'un site vitrine (C# ASP.NET, Angular) intégrant un chatbot pour vulgariser les opérations aux utilisateurs.</li>
+                            <li data-translate-key="exp1Li1">Développement de solutions d'IA pour l'analyse de vidéos chirurgicales, incluant la reconnaissance et le masquage de l'identité des patients par computer vision.</li>
+                            <li data-translate-key="exp1Li2">Création d'un pipeline ASR (Whisper ré-entraîné) pour extraire des métadonnées (interlocuteurs, tags, résumé) des enregistrements.</li>
+                            <li data-translate-key="exp1Li3">Développement d'un site vitrine (C# ASP.NET, Angular) intégrant un chatbot pour vulgariser les opérations aux utilisateurs.</li>
                         </ul>
                     </div>
                 </article>
@@ -212,12 +225,12 @@
                          <img src="https://placehold.co/100x100/ffffff/1e293b?text=ISEG" alt="Logo de ISEG" class="h-16 w-16 object-contain rounded-md">
                     </div>
                     <div>
-                        <h3 class="job-title">Formateur - Iseg Spring Code Camp</h3>
+                        <h3 class="job-title" data-translate-key="exp2Title">Formateur - Iseg Spring Code Camp</h3>
                         <p class="company-info">ISEG, Toulouse | Mars 2023</p>
                         <ul class="list-disc list-inside space-y-2 text-gray-300">
-                            <li>Animation d'un "bootcamp" de deux semaines pour initier les étudiants de l'ISEG à la méthodologie Epitech.</li>
-                            <li>Enseignement des bases du développement web (HTML, CSS, PHP, SQL) avec pour objectif la création d'un site e-commerce.</li>
-                             <li>Accompagnement quotidien des étudiants, revue des difficultés et sessions de notation individuelles.</li>
+                            <li data-translate-key="exp2Li1">Animation d'un "bootcamp" de deux semaines pour initier les étudiants de l'ISEG à la méthodologie Epitech.</li>
+                            <li data-translate-key="exp2Li2">Enseignement des bases du développement web (HTML, CSS, PHP, SQL) avec pour objectif la création d'un site e-commerce.</li>
+                            <li data-translate-key="exp2Li3">Accompagnement quotidien des étudiants, revue des difficultés et sessions de notation individuelles.</li>
                         </ul>
                     </div>
                 </article>
@@ -226,12 +239,12 @@
                         <img src="https://placehold.co/100x100/ffffff/e6002b?text=BPCE-IT" alt="Logo de BPCE-IT" class="h-16 w-16 object-contain rounded-md">
                     </div>
                     <div>
-                        <h3 class="job-title">Stagiaire Développeur Client Lourd C#</h3>
+                        <h3 class="job-title" data-translate-key="exp3Title">Stagiaire Développeur Client Lourd C#</h3>
                         <p class="company-info">BPCE-IT, Toulouse | Juillet - Décembre 2021</p>
                         <ul class="list-disc list-inside space-y-2 text-gray-300">
-                            <li>Refonte complète et autonome de l'application interne "Power10" en C# WPF.</li>
-                            <li>Collaboration directe avec le support IT pour définir les besoins et implémenter de nouvelles fonctionnalités.</li>
-                            <li>Modernisation de l'interface utilisateur et amélioration de l'expérience utilisateur.</li>
+                            <li data-translate-key="exp3Li1">Refonte complète et autonome de l'application interne "Power10" en C# WPF.</li>
+                            <li data-translate-key="exp3Li2">Collaboration directe avec le support IT pour définir les besoins et implémenter de nouvelles fonctionnalités.</li>
+                            <li data-translate-key="exp3Li3">Modernisation de l'interface utilisateur et amélioration de l'expérience utilisateur.</li>
                         </ul>
                     </div>
                 </article>
@@ -241,46 +254,46 @@
     
     <div id="page-projets" class="page">
         <div class="content-container">
-            <h2 class="section-title">Projets Personnels</h2>
+            <h2 class="section-title" data-translate-key="projectsTitle">Projets Personnels</h2>
             <div class="grid md:grid-cols-2 gap-8">
 
                 <div class="project-card md:col-span-2 p-6 rounded-lg">
-                    <h3 class="job-title mb-2">Laval Game Jam 2022</h3>
+                    <h3 class="job-title mb-2" data-translate-key="proj1Title">Laval Game Jam 2022</h3>
                      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
-                        <div>
-                            <p class="text-gray-400 mb-4">Jeu en Réalité Augmentée (AR) développé en 48h sur le thème de l'accessibilité. Notre équipe a remporté le premier prix. Le projet est un RPG en monde ouvert utilisant les capacités de l'Hololens 2, avec des interactions via suivi du regard, reconnaissance gestuelle et vocale pour lancer des sorts.</p>
-                            <div><span class="pill">Unity</span><span class="pill">C#</span><span class="pill">AR</span><span class="pill">Hololens 2</span><span class="pill">Game Jam</span></div>
-                             <a href="https://github.com/VulkreoN/Laval-Game-Jam" target="_blank" class="inline-block mt-4 text-blue-400 hover:underline">Voir le projet sur GitHub <i class="fas fa-arrow-right ml-1"></i></a>
-                        </div>
-                        <div class="youtube-embed">
-                            <iframe src="https://www.youtube.com/embed/0iO2uH7ddG0?si=ztlWOmw7lgiFR0rX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                        </div>
-                    </div>
+                         <div>
+                             <p class="text-gray-400 mb-4" data-translate-key="proj1Desc">Jeu en Réalité Augmentée (AR) développé en 48h sur le thème de l'accessibilité. Notre équipe a remporté le premier prix. Le projet est un RPG en monde ouvert utilisant les capacités de l'Hololens 2, avec des interactions via suivi du regard, reconnaissance gestuelle et vocale pour lancer des sorts.</p>
+                             <div><span class="pill">Unity</span><span class="pill">C#</span><span class="pill">AR</span><span class="pill">Hololens 2</span><span class="pill">Game Jam</span></div>
+                              <a href="https://github.com/VulkreoN/Laval-Game-Jam" target="_blank" class="inline-block mt-4 text-blue-400 hover:underline" data-translate-key="githubLink">Voir le projet sur GitHub <i class="fas fa-arrow-right ml-1"></i></a>
+                         </div>
+                         <div class="youtube-embed">
+                             <iframe src="https://www.youtube.com/embed/0iO2uH7ddG0?si=ztlWOmw7lgiFR0rX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                         </div>
+                     </div>
                 </div>
 
                 <a href="https://github.com/VulkreoN/Epitech-RPG" target="_blank" class="block project-card p-6 rounded-lg">
-                    <h3 class="job-title mb-2">Epitech RPG</h3>
-                    <p class="text-gray-400 mb-4">Un jeu de rôle en 2D complet développé en C, incluant un moteur de jeu, un système de quêtes, des combats...</p>
+                    <h3 class="job-title mb-2" data-translate-key="proj2Title">Epitech RPG</h3>
+                    <p class="text-gray-400 mb-4" data-translate-key="proj2Desc">Un jeu de rôle en 2D complet développé en C, incluant un moteur de jeu, un système de quêtes, des combats...</p>
                     <div><span class="pill">C</span><span class="pill">CSFML</span><span class="pill">Game Dev</span></div>
                 </a>
                  <a href="https://github.com/VulkreoN/pokedex-GO" target="_blank" class="block project-card p-6 rounded-lg">
-                    <h3 class="job-title mb-2">MyDexPoGo</h3>
-                    <p class="text-gray-400 mb-4">Une application mobile cross-platform qui répertorie tous les Pokémon de Pokémon Go ainsi que leurs variations, avec leurs statistiques, en utilisant plusieurs API.</p>
+                    <h3 class="job-title mb-2" data-translate-key="proj3Title">MyDexPoGo</h3>
+                    <p class="text-gray-400 mb-4" data-translate-key="proj3Desc">Une application mobile cross-platform qui répertorie tous les Pokémon de Pokémon Go ainsi que leurs variations, avec leurs statistiques, en utilisant plusieurs API.</p>
                     <div><span class="pill">Flutter</span><span class="pill">Dart</span><span class="pill">Mobile</span><span class="pill">API</span></div>
                 </a>
                 <a href="https://github.com/VulkreoN/R-Type" target="_blank" class="block project-card p-6 rounded-lg">
-                    <h3 class="job-title mb-2">R-Type</h3>
-                    <p class="text-gray-400 mb-4">Un jeu de tir coopératif à 4 joueurs basé sur le classique R-Type, développé en C++ avec un focus sur les performances et le réseau.</p>
+                    <h3 class="job-title mb-2" data-translate-key="proj4Title">R-Type</h3>
+                    <p class="text-gray-400 mb-4" data-translate-key="proj4Desc">Un jeu de tir coopératif à 4 joueurs basé sur le classique R-Type, développé en C++ avec un focus sur les performances et le réseau.</p>
                     <div><span class="pill">C++</span><span class="pill">Networking</span><span class="pill">SFML</span></div>
                 </a>
                 <a href="https://github.com/VulkreoN/Arcade-Epi" target="_blank" class="block project-card p-6 rounded-lg">
-                    <h3 class="job-title mb-2">Arcade</h3>
-                    <p class="text-gray-400 mb-4">Une borne d'arcade logicielle en C++ permettant de charger dynamiquement des jeux et des bibliothèques graphiques (SFML, SDL2, NCURSES).</p>
+                    <h3 class="job-title mb-2" data-translate-key="proj5Title">Arcade</h3>
+                    <p class="text-gray-400 mb-4" data-translate-key="proj5Desc">Une borne d'arcade logicielle en C++ permettant de charger dynamiquement des jeux et des bibliothèques graphiques (SFML, SDL2, NCURSES).</p>
                     <div><span class="pill">C++</span><span class="pill">Dynamic Loading</span><span class="pill">Game Dev</span></div>
                 </a>
-                <a href="https://github.com/VulkreoN/Area" target="_blank" class="block project-card p-6 rounded-lg">
-                    <h3 class="job-title mb-2">Area</h3>
-                    <p class="text-gray-400 mb-4">Un tableau de bord web interactif qui connecte divers services tiers via des widgets personnalisables. Développé avec React et Node.js.</p>
+                 <a href="https://github.com/VulkreoN/Area" target="_blank" class="block project-card p-6 rounded-lg">
+                    <h3 class="job-title mb-2" data-translate-key="proj6Title">Area</h3>
+                    <p class="text-gray-400 mb-4" data-translate-key="proj6Desc">Un tableau de bord web interactif qui connecte divers services tiers via des widgets personnalisables. Développé avec React et Node.js.</p>
                     <div><span class="pill">React</span><span class="pill">Node.js</span><span class="pill">API</span></div>
                 </a>
             </div>
@@ -289,46 +302,43 @@
 
     <div id="page-competences" class="page">
         <div class="content-container">
-            <h2 class="section-title">Compétences Techniques</h2>
+            <h2 class="section-title" data-translate-key="skillsTitle">Compétences Techniques</h2>
             <div class="mt-8">
-                <h3 class="text-2xl font-semibold mb-6 text-white">Langages</h3>
+                <h3 class="text-2xl font-semibold mb-6 text-white" data-translate-key="skillsLanguages">Langages</h3>
                 <div id="langages-container" class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-6 text-center">
-                    <!-- Les logos des langages seront peuplés ici -->
-                </div>
+                    </div>
             </div>
             <div class="mt-12">
-                <h3 class="text-2xl font-semibold mb-6 text-white">Frameworks & Bibliothèques</h3>
+                <h3 class="text-2xl font-semibold mb-6 text-white" data-translate-key="skillsFrameworks">Frameworks & Bibliothèques</h3>
                 <div id="frameworks-container" class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-6 text-center">
-                    <!-- Les logos des frameworks seront peuplés ici -->
-                </div>
+                    </div>
             </div>
             <div class="mt-12">
-                <h3 class="text-2xl font-semibold mb-6 text-white">Outils & Plateformes</h3>
+                <h3 class="text-2xl font-semibold mb-6 text-white" data-translate-key="skillsTools">Outils & Plateformes</h3>
                 <div id="outils-container" class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-6 text-center">
-                    <!-- Les logos des outils seront peuplés ici -->
-                </div>
+                    </div>
             </div>
         </div>
     </div>
 
     <div id="page-formation" class="page">
         <div class="content-container">
-            <h2 class="section-title">Formation</h2>
+            <h2 class="section-title" data-translate-key="educationTitle">Formation</h2>
             <div class="space-y-10">
                 <article>
-                    <h3 class="job-title">Master en Technologies de l'Information</h3>
+                    <h3 class="job-title" data-translate-key="edu1Title">Master en Technologies de l'Information</h3>
                     <p class="company-info">EPITECH, Toulouse | 2020 - 2025</p>
-                    <p class="text-gray-300">Cursus intensif en 5 ans basé sur une pédagogie par projets, développant une forte expertise technique et une grande capacité d'adaptation. L'accent est mis sur l'innovation et la réalisation de projets complexes en équipe.</p>
+                    <p class="text-gray-300" data-translate-key="edu1Desc">Cursus intensif en 5 ans basé sur une pédagogie par projets, développant une forte expertise technique et une grande capacité d'adaptation. L'accent est mis sur l'innovation et la réalisation de projets complexes en équipe.</p>
                 </article>
                 <article>
-                    <h3 class="job-title">Échange Universitaire</h3>
+                    <h3 class="job-title" data-translate-key="edu2Title">Échange Universitaire</h3>
                     <p class="company-info">Shibaura Institute of Technology, Tokyo | 2024</p>
-                    <p class="text-gray-300">Semestre d'étude au sein d'une des principales universités technologiques du Japon, avec des cours axés sur l'ingénierie et les technologies émergentes. Immersion culturelle et linguistique intensive.</p>
+                    <p class="text-gray-300" data-translate-key="edu2Desc">Semestre d'étude au sein d'une des principales universités technologiques du Japon, avec des cours axés sur l'ingénierie et les technologies émergentes. Immersion culturelle et linguistique intensive.</p>
                 </article>
                  <article>
-                    <h3 class="job-title">Baccalauréat STI2D (Mention Bien)</h3>
+                    <h3 class="job-title" data-translate-key="edu3Title">Baccalauréat STI2D (Mention Bien)</h3>
                     <p class="company-info">Lycée Maine de Biran, Bergerac | 2020</p>
-                    <p class="text-gray-300">Option SIN (Systèmes d'Information et Numérique), offrant une première approche solide de l'informatique, de l'électronique et des réseaux.</p>
+                    <p class="text-gray-300" data-translate-key="edu3Desc">Option SIN (Systèmes d'Information et Numérique), offrant une première approche solide de l'informatique, de l'électronique et des réseaux.</p>
                 </article>
             </div>
         </div>
@@ -343,6 +353,173 @@
     </script>
     <script type="module">
         import * as THREE from 'three';
+
+        // --- SECTION TRADUCTION ---
+        const translations = {
+            fr: {
+                // Méta
+                pageTitle: "Hakim Redjem - Portfolio Développeur",
+                // Navigation
+                navHome: "Accueil",
+                navExperience: "Expériences",
+                navProjects: "Projets",
+                navSkills: "Compétences",
+                navEducation: "Formation",
+                navHomeMobile: "Accueil",
+                navExperienceMobile: "Expériences",
+                navProjectsMobile: "Projets",
+                navSkillsMobile: "Compétences",
+                navEducationMobile: "Formation",
+                // Page Accueil
+                homeTitle: "Bonjour, je suis Hakim Redjem.",
+                homeSubtitle: "Un développeur logiciel polyvalent passionné par les nouvelles technologies, la 3D et la résolution de problèmes complexes.",
+                // Page Expériences
+                experienceTitle: "Expériences Professionnelles",
+                exp1Title: "Stagiaire Recherche & Développement IA",
+                exp1Li1: "Développement de solutions d'IA pour l'analyse de vidéos chirurgicales, incluant la reconnaissance et le masquage de l'identité des patients par computer vision.",
+                exp1Li2: "Création d'un pipeline ASR (Whisper ré-entraîné) pour extraire des métadonnées (interlocuteurs, tags, résumé) des enregistrements.",
+                exp1Li3: "Développement d'un site vitrine (C# ASP.NET, Angular) intégrant un chatbot pour vulgariser les opérations aux utilisateurs.",
+                exp2Title: "Formateur - Iseg Spring Code Camp",
+                exp2Li1: "Animation d'un \"bootcamp\" de deux semaines pour initier les étudiants de l'ISEG à la méthodologie Epitech.",
+                exp2Li2: "Enseignement des bases du développement web (HTML, CSS, PHP, SQL) avec pour objectif la création d'un site e-commerce.",
+                exp2Li3: "Accompagnement quotidien des étudiants, revue des difficultés et sessions de notation individuelles.",
+                exp3Title: "Stagiaire Développeur Client Lourd C#",
+                exp3Li1: "Refonte complète et autonome de l'application interne \"Power10\" en C# WPF.",
+                exp3Li2: "Collaboration directe avec le support IT pour définir les besoins et implémenter de nouvelles fonctionnalités.",
+                exp3Li3: "Modernisation de l'interface utilisateur et amélioration de l'expérience utilisateur.",
+                // Page Projets
+                projectsTitle: "Projets Personnels",
+                githubLink: "Voir le projet sur GitHub",
+                proj1Title: "Laval Game Jam 2022",
+                proj1Desc: "Jeu en Réalité Augmentée (AR) développé en 48h sur le thème de l'accessibilité. Notre équipe a remporté le premier prix. Le projet est un RPG en monde ouvert utilisant les capacités de l'Hololens 2, avec des interactions via suivi du regard, reconnaissance gestuelle et vocale pour lancer des sorts.",
+                proj2Title: "Epitech RPG",
+                proj2Desc: "Un jeu de rôle en 2D complet développé en C, incluant un moteur de jeu, un système de quêtes, des combats...",
+                proj3Title: "MyDexPoGo",
+                proj3Desc: "Une application mobile cross-platform qui répertorie tous les Pokémon de Pokémon Go ainsi que leurs variations, avec leurs statistiques, en utilisant plusieurs API.",
+                proj4Title: "R-Type",
+                proj4Desc: "Un jeu de tir coopératif à 4 joueurs basé sur le classique R-Type, développé en C++ avec un focus sur les performances et le réseau.",
+                proj5Title: "Arcade",
+                proj5Desc: "Une borne d'arcade logicielle en C++ permettant de charger dynamiquement des jeux et des bibliothèques graphiques (SFML, SDL2, NCURSES).",
+                proj6Title: "Area",
+                proj6Desc: "Un tableau de bord web interactif qui connecte divers services tiers via des widgets personnalisables. Développé avec React et Node.js.",
+                // Page Compétences
+                skillsTitle: "Compétences Techniques",
+                skillsLanguages: "Langages",
+                skillsFrameworks: "Frameworks & Bibliothèques",
+                skillsTools: "Outils & Plateformes",
+                // Page Formation
+                educationTitle: "Formation",
+                edu1Title: "Master en Technologies de l'Information",
+                edu1Desc: "Cursus intensif en 5 ans basé sur une pédagogie par projets, développant une forte expertise technique et une grande capacité d'adaptation. L'accent est mis sur l'innovation et la réalisation de projets complexes en équipe.",
+                edu2Title: "Échange Universitaire",
+                edu2Desc: "Semestre d'étude au sein d'une des principales universités technologiques du Japon, avec des cours axés sur l'ingénierie et les technologies émergentes. Immersion culturelle et linguistique intensive.",
+                edu3Title: "Baccalauréat STI2D (Mention Bien)",
+                edu3Desc: "Option SIN (Systèmes d'Information et Numérique), offrant une première approche solide de l'informatique, de l'électronique et des réseaux.",
+            },
+            en: {
+                // Meta
+                pageTitle: "Hakim Redjem - Developer Portfolio",
+                // Navigation
+                navHome: "Home",
+                navExperience: "Experience",
+                navProjects: "Projects",
+                navSkills: "Skills",
+                navEducation: "Education",
+                navHomeMobile: "Home",
+                navExperienceMobile: "Experience",
+                navProjectsMobile: "Projects",
+                navSkillsMobile: "Skills",
+                navEducationMobile: "Education",
+                // Home Page
+                homeTitle: "Hello, I'm Hakim Redjem.",
+                homeSubtitle: "A versatile software developer passionate about new technologies, 3D, and solving complex problems.",
+                // Experience Page
+                experienceTitle: "Professional Experience",
+                exp1Title: "AI R&D Intern",
+                exp1Li1: "Developed AI solutions for surgical video analysis, including patient identity recognition and masking using computer vision.",
+                exp1Li2: "Created an ASR pipeline (re-trained Whisper) to extract metadata (speakers, tags, summary) from recordings.",
+                exp1Li3: "Developed a showcase website (C# ASP.NET, Angular) with a chatbot to explain procedures to users.",
+                exp2Title: "Instructor - Iseg Spring Code Camp",
+                exp2Li1: "Led a two-week bootcamp to introduce ISEG students to the Epitech methodology.",
+                exp2Li2: "Taught web development fundamentals (HTML, CSS, PHP, SQL) with the goal of creating an e-commerce site.",
+                exp2Li3: "Provided daily student support, reviewed challenges, and conducted individual grading sessions.",
+                exp3Title: "C# Desktop Application Developer Intern",
+                exp3Li1: "Independently redesigned and rebuilt the internal 'Power10' application in C# WPF.",
+                exp3Li2: "Collaborated directly with IT support to define requirements and implement new features.",
+                exp3Li3: "Modernized the user interface and improved the user experience.",
+                // Projects Page
+                projectsTitle: "Personal Projects",
+                githubLink: "View project on GitHub",
+                proj1Title: "Laval Game Jam 2022",
+                proj1Desc: "An Augmented Reality (AR) game developed in 48 hours on the theme of accessibility. Our team won first prize. The project is an open-world RPG using Hololens 2 capabilities, with interactions via eye-tracking, gesture, and voice recognition to cast spells.",
+                proj2Title: "Epitech RPG",
+                proj2Desc: "A complete 2D role-playing game developed in C, including a game engine, quest system, combat, and more.",
+                proj3Title: "MyDexPoGo",
+                proj3Desc: "A cross-platform mobile application that lists all Pokémon from Pokémon Go and their variations, with stats, using multiple APIs.",
+                proj4Title: "R-Type",
+                proj4Desc: "A 4-player cooperative shooter based on the classic R-Type, developed in C++ with a focus on performance and networking.",
+                proj5Title: "Arcade",
+                proj5Desc: "A C++ software arcade cabinet that can dynamically load games and graphics libraries (SFML, SDL2, NCURSES).",
+                proj6Title: "Area",
+                proj6Desc: "An interactive web dashboard that connects various third-party services via customizable widgets. Developed with React and Node.js.",
+                // Skills Page
+                skillsTitle: "Technical Skills",
+                skillsLanguages: "Languages",
+                skillsFrameworks: "Frameworks & Libraries",
+                skillsTools: "Tools & Platforms",
+                // Education Page
+                educationTitle: "Education",
+                edu1Title: "Master's Degree in Information Technology",
+                edu1Desc: "Intensive 5-year project-based curriculum, developing strong technical expertise and high adaptability. Focus on innovation and complex team-based projects.",
+                edu2Title: "University Exchange",
+                edu2Desc: "Semester of study at one of Japan's leading technological universities, with courses focused on engineering and emerging technologies. Intensive cultural and linguistic immersion.",
+                edu3Title: "High School Diploma in Technology (with Honors)",
+                edu3Desc: "Specialized in Information and Digital Systems (SIN), providing a solid initial foundation in computer science, electronics, and networks.",
+            }
+        };
+
+        const langSwitcher = document.getElementById('lang-switcher');
+        const langSwitcherMobile = document.getElementById('lang-switcher-mobile');
+        let currentLang = localStorage.getItem('language') || 'fr';
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('language', lang);
+            document.documentElement.lang = lang;
+            
+            // Met à jour le texte du bouton
+            const newButtonText = lang === 'fr' ? 'EN' : 'FR';
+            langSwitcher.textContent = newButtonText;
+            langSwitcherMobile.textContent = newButtonText;
+
+            document.querySelectorAll('[data-translate-key]').forEach(element => {
+                const key = element.getAttribute('data-translate-key');
+                if (translations[lang][key]) {
+                    // Pour le lien github, on garde l'icône
+                    if (key === 'githubLink') {
+                         element.innerHTML = `${translations[lang][key]} <i class="fas fa-arrow-right ml-1"></i>`;
+                    } else {
+                         element.textContent = translations[lang][key];
+                    }
+                }
+            });
+            // Met à jour le titre de la page
+            document.title = translations[lang].pageTitle;
+        }
+
+        const toggleLanguage = () => {
+            const newLang = currentLang === 'fr' ? 'en' : 'fr';
+            setLanguage(newLang);
+        };
+
+        langSwitcher.addEventListener('click', toggleLanguage);
+        langSwitcherMobile.addEventListener('click', toggleLanguage);
+        
+        // Applique la langue au chargement de la page
+        setLanguage(currentLang);
+        
+        // --- FIN SECTION TRADUCTION ---
+
 
         let scene, camera, renderer, clock;
         const threeContainer = document.getElementById('three-container');
@@ -583,98 +760,15 @@
 
         const initialHash = window.location.hash || '#accueil';
         switchPage(initialHash);
-        window.addEventListener('hashchange', () => switchPage(window.location.hash));
-        
-        document.querySelectorAll('.nav-link, .nav-link-mobile').forEach(link => {
-            link.addEventListener('click', (e) => {
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                const hash = e.target.getAttribute('href');
-                if (window.location.hash !== hash) window.location.hash = hash;
+                const newHash = this.getAttribute('href');
+                window.location.hash = newHash;
+                switchPage(newHash);
             });
         });
-
-        function populateSkills() {
-            const skills = {
-                langages: [
-                    { name: 'C#', icon: 'csharp/csharp-original.svg' },
-                    { name: 'C++', icon: 'cplusplus/cplusplus-original.svg' },
-                    { name: 'Dart', icon: 'dart/dart-original.svg' },
-                    { name: 'GLSL', icon: 'fas fa-microchip', isClass: true, isFa: true },
-                    { name: 'Java', icon: 'java/java-original.svg' },
-                    { name: 'JavaScript', icon: 'javascript/javascript-original.svg' },
-                    { name: 'Kotlin', icon: 'kotlin/kotlin-original.svg' },
-                    { name: 'PHP', icon: 'php/php-original.svg' },
-                    { name: 'Python', icon: 'python/python-original.svg' },
-                    { name: 'SQL', icon: 'fas fa-database', isClass: true, isFa: true },
-                    { name: 'Shell', icon: 'bash/bash-original.svg'},
-                    { name: 'Swift', icon: 'swift/swift-original.svg' }
-                ],
-                frameworks: [
-                    { name: 'Angular', icon: 'angularjs/angularjs-original.svg' },
-                    { name: 'ASP.NET', icon: 'dotnetcore/dotnetcore-original.svg' },
-                    { name: 'CSFML', icon: 'fas fa-cube', isClass: true, isFa: true },
-                    { name: 'Flutter', icon: 'flutter/flutter-original.svg' },
-                    { name: 'Next.js', icon: 'nextjs/nextjs-original.svg', invert: true },
-                    { name: 'Node.js', icon: 'nodejs/nodejs-original.svg' },
-                    { name: 'OpenGL', icon: 'opengl/opengl-original.svg' },
-                    { name: 'PyTorch', icon: 'pytorch/pytorch-original.svg' },
-                    { name: 'React Native', icon: 'react/react-original.svg' },
-                    { name: 'SDL2', icon: 'sdl/sdl-original.svg' },
-                    { name: 'SFML', icon: 'sfml/sfml-original.svg' },
-                    { name: 'TensorFlow', icon: 'tensorflow/tensorflow-original.svg' },
-                    { name: 'Three.js', icon: 'threejs/threejs-original.svg', invert: true },
-                    { name: 'Unity', icon: 'unity/unity-original.svg', invert: true },
-                    { name: 'Vue.js', icon: 'vuejs/vuejs-original.svg' }
-                ],
-                outils: [
-                    { name: 'Apache', icon: 'apache/apache-original-wordmark.svg' },
-                    { name: 'AWS', icon: 'amazonwebservices/amazonwebservices-original-wordmark.svg', invert: true },
-                    { name: 'Azure', icon: 'azure/azure-original.svg' },
-                    { name: 'Confluence', icon: 'confluence/confluence-original.svg' },
-                    { name: 'Docker', icon: 'docker/docker-original.svg' },
-                    { name: 'Figma', icon: 'figma/figma-original.svg' },
-                    { name: 'Firebase', icon: 'firebase/firebase-plain.svg' },
-                    { name: 'Git', icon: 'git/git-original.svg' },
-                    { name: 'Hololens 2', icon: 'fas fa-vr-cardboard', isClass: true, isFa: true },
-                    { name: 'Jenkins', icon: 'jenkins/jenkins-original.svg' },
-                    { name: 'Jira', icon: 'jira/jira-original.svg' },
-                    { name: 'Kubernetes', icon: 'kubernetes/kubernetes-plain.svg' },
-                    { name: 'Makefile', icon: 'fas fa-file-code', isClass: true, isFa: true },
-                    { name: 'MySQL', icon: 'mysql/mysql-original.svg' },
-                    { name: 'Nginx', icon: 'nginx/nginx-original.svg' },
-                    { name: 'PostgreSQL', icon: 'postgresql/postgresql-original.svg' }
-                ]
-            };
-            
-            const langagesContainer = document.getElementById('langages-container');
-            const frameworksContainer = document.getElementById('frameworks-container');
-            const outilsContainer = document.getElementById('outils-container');
-
-            const createCard = (skill) => {
-                const card = document.createElement('div');
-                card.className = 'skill-card flex flex-col items-center justify-center p-4 rounded-lg';
-                if (skill.isClass && skill.isFa) {
-                    card.innerHTML = `<i class="${skill.icon} text-5xl h-14 w-14 mb-2 flex items-center justify-center text-gray-400"></i><span class="text-sm">${skill.name}</span>`;
-                } else if (skill.icon.endsWith('.svg')) {
-                    card.innerHTML = `<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${skill.icon}" alt="Logo de ${skill.name}" class="h-14 w-14 mb-2 ${skill.invert ? 'filter invert' : ''}"><span class="text-sm">${skill.name}</span>`;
-                }
-                return card;
-            };
-            
-            if(langagesContainer) {
-                langagesContainer.innerHTML = '';
-                skills.langages.forEach(skill => langagesContainer.appendChild(createCard(skill)));
-            }
-            if(frameworksContainer) {
-                frameworksContainer.innerHTML = '';
-                skills.frameworks.forEach(skill => frameworksContainer.appendChild(createCard(skill)));
-            }
-            if(outilsContainer) {
-                outilsContainer.innerHTML = '';
-                skills.outils.forEach(skill => outilsContainer.appendChild(createCard(skill)));
-            }
-        }
-        populateSkills();
 
     </script>
 </body>
