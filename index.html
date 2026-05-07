@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hakim Redjem - Portfolio Développeur</title>
+    <title>Hakim Redjem - AI & Full-Stack Engineer</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='100%25' x2='100%25' y2='0%25'%3E%3Cstop offset='0%25' stop-color='%238b5cf6'/%3E%3Cstop offset='100%25' stop-color='%2360a5fa'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M25 20 C20 20, 20 25, 20 25 V 75 C 20 80, 25 80, 25 80 H 30 V 55 H 60 L 80 75 C 85 80, 90 80, 90 75 V 65 L 70 50 L 90 35 V 25 C 90 20, 85 20, 80 25 L 60 40 H 30 V 25 C 30 20, 25 20, 25 20 Z' fill='url(%23grad)'/%3E%3C/svg%3E">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap');
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #111827;
-            color: #e5e7eb;
+            background-color: #0f172a; /* Slate 900 for better depth */
+            color: #e2e8f0;
             margin: 0;
             overflow: hidden;
         }
@@ -26,13 +26,9 @@
             padding: 6rem 1rem 4rem 1rem;
             opacity: 0;
             pointer-events: none;
-            transition: opacity 0.5s ease-in-out;
+            transition: opacity 0.6s ease-in-out;
         }
-        @media (min-width: 768px) {
-            .page {
-                padding: 6rem 4rem 4rem 4rem;
-            }
-        }
+        @media (min-width: 768px) { .page { padding: 6rem 4rem 4rem 4rem; } }
         .page.active {
             opacity: 1;
             pointer-events: auto;
@@ -46,110 +42,81 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(17, 24, 39, 0.5);
-            backdrop-filter: blur(10px);
+            background: linear-gradient(to bottom, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0));
+            backdrop-filter: blur(8px);
             z-index: 100;
         }
-         @media (min-width: 768px) {
-            nav {
-                 padding: 1.5rem 4rem;
-            }
-        }
+        @media (min-width: 768px) { nav { padding: 1.5rem 4rem; } }
         nav a {
-            color: #d1d5db;
+            color: #cbd5e1;
             text-decoration: none;
             font-weight: 500;
             padding: 0.5rem 1rem;
             border-radius: 0.5rem;
-            transition: background-color 0.3s, color 0.3s;
+            transition: all 0.3s ease;
         }
         nav a.active, nav a:hover {
-            background-color: #3b82f6;
-            color: #fff;
+            color: #60a5fa;
+            text-shadow: 0 0 10px rgba(96, 165, 250, 0.5);
         }
         .lang-switcher {
-            background: none;
-            border: 1px solid #374151;
-            color: #d1d5db;
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid #334155;
+            color: #cbd5e1;
             padding: 0.5rem 1rem;
             border-radius: 0.5rem;
             cursor: pointer;
-            font-weight: 500;
-            transition: background-color 0.3s, color 0.3s;
-        }
-        .lang-switcher:hover {
-            background-color: #374151;
-            color: #fff;
-        }
-        .content-container {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        .section-title {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #fff;
-            margin-bottom: 2rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid #374151;
-        }
-         @media (min-width: 768px) {
-            .section-title {
-                font-size: 2.5rem;
-            }
-        }
-        .job-title {
-            font-size: 1.25rem;
             font-weight: 600;
-            color: #fff;
+            transition: all 0.3s ease;
         }
-        .company-info {
-            color: #9ca3af;
-            margin-bottom: 0.5rem;
+        .lang-switcher:hover { background-color: #3b82f6; color: #fff; border-color: #3b82f6; }
+        .content-container { max-width: 1000px; margin: 0 auto; }
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: linear-gradient(to right, #8b5cf6, #60a5fa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 2.5rem;
+            letter-spacing: -0.05em;
         }
+        .job-title { font-size: 1.5rem; font-weight: 700; color: #fff; }
+        .company-info { color: #60a5fa; font-weight: 500; margin-bottom: 0.75rem; font-size: 0.9rem; letter-spacing: 0.05em; text-transform: uppercase;}
         .skill-card {
-            background-color: rgba(31, 41, 55, 0.5);
-            transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
+            background-color: rgba(30, 41, 59, 0.6);
+            border: 1px solid rgba(255,255,255,0.05);
+            backdrop-filter: blur(4px);
+            transition: transform 0.2s, border-color 0.2s;
         }
-        .skill-card:hover {
-            transform: scale(1.05);
-            background-color: rgba(55, 65, 81, 0.7);
-        }
+        .skill-card:hover { transform: translateY(-5px); border-color: #60a5fa; }
         .project-card {
-            background-color: rgba(31, 41, 55, 0.5);
-            transition: transform 0.3s ease-in-out;
+            background-color: rgba(30, 41, 59, 0.6);
+            border: 1px solid rgba(255,255,255,0.05);
+            backdrop-filter: blur(4px);
+            transition: all 0.3s ease;
         }
-        .project-card:hover {
-            transform: translateY(-5px);
-        }
+        .project-card:hover { transform: translateY(-5px); border-color: #8b5cf6; box-shadow: 0 10px 30px -10px rgba(139, 92, 246, 0.3); }
         .pill {
             display: inline-block;
-            background-color: #374151;
-            color: #e5e7eb;
+            background: rgba(96, 165, 250, 0.1);
+            border: 1px solid rgba(96, 165, 250, 0.2);
+            color: #60a5fa;
             padding: 0.25rem 0.75rem;
             border-radius: 9999px;
-            font-size: 0.8rem;
-            font-weight: 500;
+            font-size: 0.75rem;
+            font-weight: 600;
             margin: 0.25rem;
+            letter-spacing: 0.05em;
         }
-        .youtube-embed {
-            position: relative;
-            padding-bottom: 56.25%; /* 16:9 aspect ratio */
-            height: 0;
-            overflow: hidden;
-            width: 100%;
-            border-radius: 0.5rem;
-        }
-        .youtube-embed iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-        .filter.invert { /* Style for inverting icons like Next.js */
-            filter: invert(1);
-        }
+        .youtube-embed { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 0.5rem; border: 1px solid rgba(255,255,255,0.1);}
+        .youtube-embed iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+        .filter.invert { filter: invert(1); }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #475569; }
     </style>
 </head>
 <body>
@@ -164,9 +131,9 @@
                 </defs>
                 <path d="M25 20 C20 20, 20 25, 20 25 V 75 C 20 80, 25 80, 25 80 H 30 V 55 H 60 L 80 75 C 85 80, 90 80, 90 75 V 65 L 70 50 L 90 35 V 25 C 90 20, 85 20, 80 25 L 60 40 H 30 V 25 C 30 20, 25 20, 25 20 Z" fill="url(#navLogoGrad)"/>
             </svg>
-            <span class="text-xl font-bold hidden sm:inline">Hakim Redjem</span>
+            <span class="text-xl font-bold hidden sm:inline text-white">HAKIM REDJEM</span>
         </a>
-        <div class="hidden md:flex items-center space-x-4">
+        <div class="hidden md:flex items-center space-x-6">
             <a href="#accueil" class="nav-link active" data-translate-key="navHome">Accueil</a>
             <a href="#experiences" class="nav-link" data-translate-key="navExperience">Expériences</a>
             <a href="#projets" class="nav-link" data-translate-key="navProjects">Projets</a>
@@ -182,7 +149,7 @@
         </div>
     </nav>
     
-    <div id="mobile-menu" class="hidden fixed inset-0 bg-gray-900/90 z-50 flex flex-col items-center justify-center space-y-6 text-2xl">
+    <div id="mobile-menu" class="hidden fixed inset-0 bg-slate-900/95 z-50 flex flex-col items-center justify-center space-y-6 text-2xl backdrop-blur-md">
         <button id="mobile-menu-close-button" class="absolute top-6 right-6 text-4xl text-white">&times;</button>
         <a href="#accueil" class="nav-link-mobile" data-translate-key="navHomeMobile">Accueil</a>
         <a href="#experiences" class="nav-link-mobile" data-translate-key="navExperienceMobile">Expériences</a>
@@ -195,12 +162,12 @@
 
     <div id="page-accueil" class="page active">
         <div class="content-container h-full flex flex-col justify-center">
-            <h1 class="text-4xl md:text-6xl font-extrabold text-white" data-translate-key="homeTitle">Bonjour, je suis Hakim Redjem.</h1>
-            <p class="text-xl md:text-2xl text-gray-300 mt-4" data-translate-key="homeSubtitle">Un développeur logiciel polyvalent passionné par les nouvelles technologies, la 3D et la résolution de problèmes complexes.</p>
-            <div class="mt-8 flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6 text-gray-300">
-                <a href="mailto:hakim.redjem@epitech.eu" class="hover:text-blue-400 flex items-center gap-2 text-lg"><i class="fas fa-envelope fa-fw"></i> Email</a>
-                <a href="https://www.linkedin.com/in/hakim-redjem" target="_blank" class="hover:text-blue-400 flex items-center gap-2 text-lg"><i class="fab fa-linkedin fa-fw"></i> LinkedIn</a>
-                <a href="https://github.com/VulkreoN" target="_blank" class="hover:text-blue-400 flex items-center gap-2 text-lg"><i class="fab fa-github fa-fw"></i> GitHub</a>
+            <h1 class="text-5xl md:text-7xl font-extrabold text-white tracking-tight" data-translate-key="homeTitle">Building AI-native systems<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-500">from 0 to 1.</span></h1>
+            <p class="text-xl md:text-2xl text-slate-400 mt-6 max-w-2xl font-light" data-translate-key="homeSubtitle">Je suis Hakim Redjem, Ingénieur IA & Développeur Full-Stack. J'architecture des pipelines complexes et je transforme des concepts ambitieux en produits robustes.</p>
+            <div class="mt-10 flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-8 text-slate-300 font-medium">
+                <a href="mailto:hakim.redjem@epitech.eu" class="hover:text-blue-400 flex items-center gap-2 text-lg transition-colors"><i class="fas fa-envelope fa-fw text-blue-500"></i> hakim.redjem@epitech.eu</a>
+                <a href="https://www.linkedin.com/in/hakim-redjem" target="_blank" class="hover:text-blue-400 flex items-center gap-2 text-lg transition-colors"><i class="fab fa-linkedin fa-fw text-blue-500"></i> LinkedIn</a>
+                <a href="https://github.com/VulkreoN" target="_blank" class="hover:text-blue-400 flex items-center gap-2 text-lg transition-colors"><i class="fab fa-github fa-fw text-blue-500"></i> GitHub</a>
             </div>
         </div>
     </div>
@@ -208,96 +175,85 @@
     <div id="page-experiences" class="page">
         <div class="content-container">
             <h2 class="section-title" data-translate-key="experienceTitle">Expériences Professionnelles</h2>
-            <div class="space-y-12">
-                <article class="flex flex-col md:flex-row items-start gap-8">
-                    <div class="w-24 h-24 flex-shrink-0 bg-white/10 rounded-lg p-2 flex items-center justify-center">
-                        <img src="https://placehold.co/100x100/ffffff/1e293b?text=Medinbox" alt="Logo de Medinbox" class="h-16 w-16 object-contain rounded-md">
+            <div class="space-y-12 relative before:absolute before:inset-0 before:ml-12 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-slate-700 before:to-transparent">
+                
+                <article class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                    <div class="flex items-center justify-center w-24 h-24 rounded-2xl bg-slate-800 border border-slate-700 shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 shadow-xl z-10">
+                        <img src="https://placehold.co/100x100/ffffff/1e293b?text=MDX" alt="Medinbox" class="h-14 w-14 object-contain rounded-md">
                     </div>
-                    <div>
-                        <h3 class="job-title" data-translate-key="exp1Title">Stagiaire Recherche & Développement IA</h3>
-                        <p class="company-info">Medinbox, Toulouse | Avril - Août 2023</p>
-                        <ul class="list-disc list-inside space-y-2 text-gray-300">
-                            <li data-translate-key="exp1Li1">Développement de solutions d'IA pour l'analyse de vidéos chirurgicales, incluant la reconnaissance et le masquage de l'identité des patients par computer vision.</li>
-                            <li data-translate-key="exp1Li2">Création d'un pipeline ASR (Whisper ré-entraîné) pour extraire des métadonnées (interlocuteurs, tags, résumé) des enregistrements.</li>
-                            <li data-translate-key="exp1Li3">Développement d'un site vitrine (C# ASP.NET, Angular) intégrant un chatbot pour vulgariser les opérations aux utilisateurs.</li>
+                    <div class="w-[calc(100%-7rem)] md:w-[calc(50%-4rem)] p-6 rounded-2xl bg-slate-800/50 border border-slate-700 backdrop-blur-sm hover:border-blue-500 transition-colors">
+                        <h3 class="job-title" data-translate-key="exp1Title">Ingénieur IA & R&D</h3>
+                        <p class="company-info">Medinbox | Avril - Août 2023</p>
+                        <ul class="list-none space-y-3 text-slate-300">
+                            <li class="flex items-start"><i class="fas fa-check-circle text-blue-500 mt-1 mr-3"></i><span data-translate-key="exp1Li1">Architecture "from scratch" d'un pipeline d'Intelligence Artificielle pour l'upgrade d'équipements médicaux en blocs opératoires.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check-circle text-blue-500 mt-1 mr-3"></i><span data-translate-key="exp1Li2">Fine-tuning du modèle Whisper (PyTorch) pour la retranscription et le tagging automatique de vidéos chirurgicales de haute précision.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check-circle text-blue-500 mt-1 mr-3"></i><span data-translate-key="exp1Li3">Développement d'un Chatbot spécialisé en cardiologie (interface C# ASP.NET/Angular). Projet présenté par le CEO au ARCH Cardiology Symposium 2024.</span></li>
                         </ul>
                     </div>
                 </article>
-                <article class="flex flex-col md:flex-row items-start gap-8">
-                    <div class="w-24 h-24 flex-shrink-0 bg-white/10 rounded-lg p-2 flex items-center justify-center">
-                         <img src="https://placehold.co/100x100/ffffff/1e293b?text=ISEG" alt="Logo de ISEG" class="h-16 w-16 object-contain rounded-md">
+
+                <article class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                    <div class="flex items-center justify-center w-24 h-24 rounded-2xl bg-slate-800 border border-slate-700 shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 shadow-xl z-10">
+                        <img src="https://placehold.co/100x100/ffffff/e6002b?text=BPCE" alt="BPCE-IT" class="h-14 w-14 object-contain rounded-md">
                     </div>
-                    <div>
-                        <h3 class="job-title" data-translate-key="exp2Title">Formateur - Iseg Spring Code Camp</h3>
-                        <p class="company-info">ISEG, Toulouse | Mars 2023</p>
-                        <ul class="list-disc list-inside space-y-2 text-gray-300">
-                            <li data-translate-key="exp2Li1">Animation d'un "bootcamp" de deux semaines pour initier les étudiants de l'ISEG à la méthodologie Epitech.</li>
-                            <li data-translate-key="exp2Li2">Enseignement des bases du développement web (HTML, CSS, PHP, SQL) avec pour objectif la création d'un site e-commerce.</li>
-                            <li data-translate-key="exp2Li3">Accompagnement quotidien des étudiants, revue des difficultés et sessions de notation individuelles.</li>
+                    <div class="w-[calc(100%-7rem)] md:w-[calc(50%-4rem)] p-6 rounded-2xl bg-slate-800/50 border border-slate-700 backdrop-blur-sm hover:border-purple-500 transition-colors">
+                        <h3 class="job-title" data-translate-key="exp2Title">Développeur Full-Stack Logiciel</h3>
+                        <p class="company-info">BPCE-IT | Juillet - Déc. 2021</p>
+                        <ul class="list-none space-y-3 text-slate-300">
+                            <li class="flex items-start"><i class="fas fa-check-circle text-purple-500 mt-1 mr-3"></i><span data-translate-key="exp2Li1">Ownership total du logiciel de diagnostic "Power10" en tant que seul développeur en charge de l'outil pour le support IT national.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check-circle text-purple-500 mt-1 mr-3"></i><span data-translate-key="exp2Li2">Refonte de l'infrastructure et intégration d'Active Directory et AirWatch pour la gestion des flottes mobiles.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check-circle text-purple-500 mt-1 mr-3"></i><span data-translate-key="exp2Li3">Implémentation de features avancées (ex: localisation instantanée d'un PC via le numéro de téléphone de l'utilisateur).</span></li>
                         </ul>
                     </div>
                 </article>
-                <article class="flex flex-col md:flex-row items-start gap-8">
-                     <div class="w-24 h-24 flex-shrink-0 bg-white/10 rounded-lg p-2 flex items-center justify-center">
-                        <img src="https://placehold.co/100x100/ffffff/e6002b?text=BPCE-IT" alt="Logo de BPCE-IT" class="h-16 w-16 object-contain rounded-md">
+
+                <article class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                    <div class="flex items-center justify-center w-24 h-24 rounded-2xl bg-slate-800 border border-slate-700 shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 shadow-xl z-10">
+                         <img src="https://placehold.co/100x100/ffffff/1e293b?text=ISEG" alt="ISEG" class="h-14 w-14 object-contain rounded-md">
                     </div>
-                    <div>
-                        <h3 class="job-title" data-translate-key="exp3Title">Stagiaire Développeur Client Lourd C#</h3>
-                        <p class="company-info">BPCE-IT, Toulouse | Juillet - Décembre 2021</p>
-                        <ul class="list-disc list-inside space-y-2 text-gray-300">
-                            <li data-translate-key="exp3Li1">Refonte complète et autonome de l'application interne "Power10" en C# WPF.</li>
-                            <li data-translate-key="exp3Li2">Collaboration directe avec le support IT pour définir les besoins et implémenter de nouvelles fonctionnalités.</li>
-                            <li data-translate-key="exp3Li3">Modernisation de l'interface utilisateur et amélioration de l'expérience utilisateur.</li>
+                    <div class="w-[calc(100%-7rem)] md:w-[calc(50%-4rem)] p-6 rounded-2xl bg-slate-800/50 border border-slate-700 backdrop-blur-sm hover:border-blue-400 transition-colors">
+                        <h3 class="job-title" data-translate-key="exp3Title">Mentor & Instructeur Logiciel</h3>
+                        <p class="company-info">ISEG | Mars - Avril 2023</p>
+                        <ul class="list-none space-y-3 text-slate-300">
+                            <li class="flex items-start"><i class="fas fa-check-circle text-blue-400 mt-1 mr-3"></i><span data-translate-key="exp3Li1">Enseignement de la "méthode Epitech" (autonomie pure et apprentissage par la pratique) lors d'un bootcamp de 2 semaines.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check-circle text-blue-400 mt-1 mr-3"></i><span data-translate-key="exp3Li2">Accompagnement des étudiants de 1ère année dans la création from scratch d'une plateforme E-commerce (HTML, CSS, PHP, SQL).</span></li>
                         </ul>
                     </div>
                 </article>
+
             </div>
         </div>
     </div>
     
     <div id="page-projets" class="page">
         <div class="content-container">
-            <h2 class="section-title" data-translate-key="projectsTitle">Projets Personnels</h2>
+            <h2 class="section-title" data-translate-key="projectsTitle">Projets & R&D</h2>
             <div class="grid md:grid-cols-2 gap-8">
 
-                <div class="project-card md:col-span-2 p-6 rounded-lg">
-                    <h3 class="job-title mb-2" data-translate-key="proj1Title">Laval Game Jam 2022</h3>
-                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+                <div class="project-card md:col-span-2 p-8 rounded-2xl">
+                    <h3 class="job-title mb-2 text-3xl" data-translate-key="proj1Title">Laval Game Jam (1er Prix)</h3>
+                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-6">
                          <div>
-                             <p class="text-gray-400 mb-4" data-translate-key="proj1Desc">Jeu en Réalité Augmentée (AR) développé en 48h sur le thème de l'accessibilité. Notre équipe a remporté le premier prix. Le projet est un RPG en monde ouvert utilisant les capacités de l'Hololens 2, avec des interactions via suivi du regard, reconnaissance gestuelle et vocale pour lancer des sorts.</p>
-                             <div><span class="pill">Unity</span><span class="pill">C#</span><span class="pill">AR</span><span class="pill">Hololens 2</span><span class="pill">Game Jam</span></div>
-                              <a href="https://github.com/VulkreoN/Laval-Game-Jam" target="_blank" class="inline-block mt-4 text-blue-400 hover:underline" data-translate-key="githubLink">Voir le projet sur GitHub <i class="fas fa-arrow-right ml-1"></i></a>
+                             <p class="text-slate-300 mb-6 leading-relaxed" data-translate-key="proj1Desc">Développement en 48h chrono d'un RPG en monde ouvert en Réalité Augmentée (AR). L'innovation ? L'utilisation poussée de l'Hololens 2 : casting de sorts via l'eye-tracking, la reconnaissance vocale et le hand-tracking.</p>
+                             <div class="mb-6"><span class="pill">Unity</span><span class="pill">C#</span><span class="pill">Hololens 2</span><span class="pill">Computer Vision</span></div>
+                              <a href="https://github.com/VulkreoN/Laval-Game-Jam" target="_blank" class="inline-flex items-center text-blue-400 font-bold hover:text-blue-300 transition-colors" data-translate-key="githubLink">Voir l'architecture sur GitHub <i class="fas fa-arrow-right ml-2"></i></a>
                          </div>
-                         <div class="youtube-embed">
+                         <div class="youtube-embed shadow-2xl">
                              <iframe src="https://www.youtube.com/embed/0iO2uH7ddG0?si=ztlWOmw7lgiFR0rX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                          </div>
                      </div>
                 </div>
 
-                <a href="https://github.com/VulkreoN/Epitech-RPG" target="_blank" class="block project-card p-6 rounded-lg">
-                    <h3 class="job-title mb-2" data-translate-key="proj2Title">Epitech RPG</h3>
-                    <p class="text-gray-400 mb-4" data-translate-key="proj2Desc">Un jeu de rôle en 2D complet développé en C, incluant un moteur de jeu, un système de quêtes, des combats...</p>
-                    <div><span class="pill">C</span><span class="pill">CSFML</span><span class="pill">Game Dev</span></div>
+                <a href="https://github.com/VulkreoN/R-Type" target="_blank" class="block project-card p-8 rounded-2xl">
+                    <h3 class="job-title mb-3" data-translate-key="proj4Title">Moteur C++ : R-Type</h3>
+                    <p class="text-slate-400 mb-6" data-translate-key="proj4Desc">Création d'un moteur de jeu ECS (Entity Component System) custom en C++ pour un jeu multijoueur. Focus intense sur l'optimisation réseau et la gestion de la mémoire.</p>
+                    <div><span class="pill">C++</span><span class="pill">Architecture</span><span class="pill">Networking UDP/TCP</span></div>
                 </a>
-                 <a href="https://github.com/VulkreoN/pokedex-GO" target="_blank" class="block project-card p-6 rounded-lg">
-                    <h3 class="job-title mb-2" data-translate-key="proj3Title">MyDexPoGo</h3>
-                    <p class="text-gray-400 mb-4" data-translate-key="proj3Desc">Une application mobile cross-platform qui répertorie tous les Pokémon de Pokémon Go ainsi que leurs variations, avec leurs statistiques, en utilisant plusieurs API.</p>
-                    <div><span class="pill">Flutter</span><span class="pill">Dart</span><span class="pill">Mobile</span><span class="pill">API</span></div>
-                </a>
-                <a href="https://github.com/VulkreoN/R-Type" target="_blank" class="block project-card p-6 rounded-lg">
-                    <h3 class="job-title mb-2" data-translate-key="proj4Title">R-Type</h3>
-                    <p class="text-gray-400 mb-4" data-translate-key="proj4Desc">Un jeu de tir coopératif à 4 joueurs basé sur le classique R-Type, développé en C++ avec un focus sur les performances et le réseau.</p>
-                    <div><span class="pill">C++</span><span class="pill">Networking</span><span class="pill">SFML</span></div>
-                </a>
-                <a href="https://github.com/VulkreoN/Arcade-Epi" target="_blank" class="block project-card p-6 rounded-lg">
-                    <h3 class="job-title mb-2" data-translate-key="proj5Title">Arcade</h3>
-                    <p class="text-gray-400 mb-4" data-translate-key="proj5Desc">Une borne d'arcade logicielle en C++ permettant de charger dynamiquement des jeux et des bibliothèques graphiques (SFML, SDL2, NCURSES).</p>
-                    <div><span class="pill">C++</span><span class="pill">Dynamic Loading</span><span class="pill">Game Dev</span></div>
-                </a>
-                 <a href="https://github.com/VulkreoN/Area" target="_blank" class="block project-card p-6 rounded-lg">
-                    <h3 class="job-title mb-2" data-translate-key="proj6Title">Area</h3>
-                    <p class="text-gray-400 mb-4" data-translate-key="proj6Desc">Un tableau de bord web interactif qui connecte divers services tiers via des widgets personnalisables. Développé avec React et Node.js.</p>
-                    <div><span class="pill">React</span><span class="pill">Node.js</span><span class="pill">API</span></div>
+
+                <a href="https://github.com/VulkreoN/Area" target="_blank" class="block project-card p-8 rounded-2xl">
+                    <h3 class="job-title mb-3" data-translate-key="proj6Title">API Hub : Area</h3>
+                    <p class="text-slate-400 mb-6" data-translate-key="proj6Desc">Plateforme d'automatisation (type Zapier) connectant divers micro-services. Architecture backend robuste avec gestion d'authentification OAuth2.</p>
+                    <div><span class="pill">React</span><span class="pill">Node.js</span><span class="pill">API REST</span><span class="pill">OAuth2</span></div>
                 </a>
             </div>
         </div>
@@ -305,44 +261,39 @@
 
     <div id="page-competences" class="page">
         <div class="content-container">
-            <h2 class="section-title" data-translate-key="skillsTitle">Compétences Techniques</h2>
+            <h2 class="section-title" data-translate-key="skillsTitle">Stack Technologique</h2>
             <div class="mt-8">
-                <h3 class="text-2xl font-semibold mb-6 text-white" data-translate-key="skillsLanguages">Langages</h3>
-                <div id="langages-container" class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-6 text-center">
-                    </div>
+                <h3 class="text-xl font-bold mb-6 text-slate-300 uppercase tracking-widest border-b border-slate-700 pb-2" data-translate-key="skillsLanguages">Core Languages</h3>
+                <div id="langages-container" class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-4 text-center"></div>
             </div>
             <div class="mt-12">
-                <h3 class="text-2xl font-semibold mb-6 text-white" data-translate-key="skillsFrameworks">Frameworks & Bibliothèques</h3>
-                <div id="frameworks-container" class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-6 text-center">
-                    </div>
+                <h3 class="text-xl font-bold mb-6 text-slate-300 uppercase tracking-widest border-b border-slate-700 pb-2" data-translate-key="skillsFrameworks">AI, Libraries & Frameworks</h3>
+                <div id="frameworks-container" class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-4 text-center"></div>
             </div>
             <div class="mt-12">
-                <h3 class="text-2xl font-semibold mb-6 text-white" data-translate-key="skillsTools">Outils & Plateformes</h3>
-                <div id="outils-container" class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-6 text-center">
-                    </div>
+                <h3 class="text-xl font-bold mb-6 text-slate-300 uppercase tracking-widest border-b border-slate-700 pb-2" data-translate-key="skillsTools">Cloud, DevOps & Tools</h3>
+                <div id="outils-container" class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-4 text-center"></div>
             </div>
         </div>
     </div>
 
     <div id="page-formation" class="page">
         <div class="content-container">
-            <h2 class="section-title" data-translate-key="educationTitle">Formation</h2>
-            <div class="space-y-10">
-                <article>
-                    <h3 class="job-title" data-translate-key="edu1Title">Master en Technologies de l'Information</h3>
-                    <p class="company-info">EPITECH, Toulouse | 2020 - 2025</p>
-                    <p class="text-gray-300" data-translate-key="edu1Desc">Cursus intensif en 5 ans basé sur une pédagogie par projets, développant une forte expertise technique et une grande capacité d'adaptation. L'accent est mis sur l'innovation et la réalisation de projets complexes en équipe.</p>
+            <h2 class="section-title" data-translate-key="educationTitle">Background Académique</h2>
+            <div class="space-y-8">
+                
+                <article class="p-8 rounded-2xl bg-slate-800/50 border border-slate-700 backdrop-blur-sm">
+                    <h3 class="job-title text-2xl" data-translate-key="edu2Title">Études Technologiques Internationales</h3>
+                    <p class="company-info mt-2">Shibaura Institute of Technology, Tokyo | 2023 - 2024</p>
+                    <p class="text-slate-300 mt-4 leading-relaxed" data-translate-key="edu2Desc">Une année complète en immersion au sein de l'une des universités les plus prestigieuses du Japon. Focalisation sur les technologies émergentes, adaptation interculturelle et validation de mon aisance à évoluer dans un environnement professionnel tokyoïte.</p>
                 </article>
-                <article>
-                    <h3 class="job-title" data-translate-key="edu2Title">Échange Universitaire</h3>
-                    <p class="company-info">Shibaura Institute of Technology, Tokyo | 2024</p>
-                    <p class="text-gray-300" data-translate-key="edu2Desc">Semestre d'étude au sein d'une des principales universités technologiques du Japon, avec des cours axés sur l'ingénierie et les technologies émergentes. Immersion culturelle et linguistique intensive.</p>
+
+                <article class="p-8 rounded-2xl bg-slate-800/50 border border-slate-700 backdrop-blur-sm">
+                    <h3 class="job-title text-2xl" data-translate-key="edu1Title">Bachelor en Technologies de l'Information</h3>
+                    <p class="company-info mt-2">EPITECH, Toulouse | 2020 - 2023</p>
+                    <p class="text-slate-300 mt-4 leading-relaxed" data-translate-key="edu1Desc">Formation d'ingénierie 100% basée sur la réalisation de projets complexes. Pas de cours théoriques, uniquement de la pratique intensive, de l'architecture logicielle et de la livraison de code répondant aux standards stricts de l'industrie.</p>
                 </article>
-                 <article>
-                    <h3 class="job-title" data-translate-key="edu3Title">Baccalauréat STI2D (Mention Bien)</h3>
-                    <p class="company-info">Lycée Maine de Biran, Bergerac | 2020</p>
-                    <p class="text-gray-300" data-translate-key="edu3Desc">Option SIN (Systèmes d'Information et Numérique), offrant une première approche solide de l'informatique, de l'électronique et des réseaux.</p>
-                </article>
+
             </div>
         </div>
     </div>
@@ -359,173 +310,110 @@
 
         const translations = {
             fr: {
-                pageTitle: "Hakim Redjem - Portfolio Développeur",
-                navHome: "Accueil",
-                navExperience: "Expériences",
-                navProjects: "Projets",
-                navSkills: "Compétences",
-                navEducation: "Formation",
-                navHomeMobile: "Accueil",
-                navExperienceMobile: "Expériences",
-                navProjectsMobile: "Projets",
-                navSkillsMobile: "Compétences",
-                navEducationMobile: "Formation",
-                homeTitle: "Bonjour, je suis Hakim Redjem.",
-                homeSubtitle: "Un développeur logiciel polyvalent passionné par les nouvelles technologies, la 3D et la résolution de problèmes complexes.",
-                experienceTitle: "Expériences Professionnelles",
-                exp1Title: "Stagiaire Recherche & Développement IA",
-                exp1Li1: "Développement de solutions d'IA pour l'analyse de vidéos chirurgicales, incluant la reconnaissance et le masquage de l'identité des patients par computer vision.",
-                exp1Li2: "Création d'un pipeline ASR (Whisper ré-entraîné) pour extraire des métadonnées (interlocuteurs, tags, résumé) des enregistrements.",
-                exp1Li3: "Développement d'un site vitrine (C# ASP.NET, Angular) intégrant un chatbot pour vulgariser les opérations aux utilisateurs.",
-                exp2Title: "Formateur - Iseg Spring Code Camp",
-                exp2Li1: "Animation d'un \"bootcamp\" de deux semaines pour initier les étudiants de l'ISEG à la méthodologie Epitech.",
-                exp2Li2: "Enseignement des bases du développement web (HTML, CSS, PHP, SQL) avec pour objectif la création d'un site e-commerce.",
-                exp2Li3: "Accompagnement quotidien des étudiants, revue des difficultés et sessions de notation individuelles.",
-                exp3Title: "Stagiaire Développeur Client Lourd C#",
-                exp3Li1: "Refonte complète et autonome de l'application interne \"Power10\" en C# WPF.",
-                exp3Li2: "Collaboration directe avec le support IT pour définir les besoins et implémenter de nouvelles fonctionnalités.",
-                exp3Li3: "Modernisation de l'interface utilisateur et amélioration de l'expérience utilisateur.",
-                projectsTitle: "Projets Personnels",
-                githubLink: "Voir le projet sur GitHub",
-                proj1Title: "Laval Game Jam 2022",
-                proj1Desc: "Jeu en Réalité Augmentée (AR) développé en 48h sur le thème de l'accessibilité. Notre équipe a remporté le premier prix. Le projet est un RPG en monde ouvert utilisant les capacités de l'Hololens 2, avec des interactions via suivi du regard, reconnaissance gestuelle et vocale pour lancer des sorts.",
-                proj2Title: "Epitech RPG",
-                proj2Desc: "Un jeu de rôle en 2D complet développé en C, incluant un moteur de jeu, un système de quêtes, des combats...",
-                proj3Title: "MyDexPoGo",
-                proj3Desc: "Une application mobile cross-platform qui répertorie tous les Pokémon de Pokémon Go ainsi que leurs variations, avec leurs statistiques, en utilisant plusieurs API.",
-                proj4Title: "R-Type",
-                proj4Desc: "Un jeu de tir coopératif à 4 joueurs basé sur le classique R-Type, développé en C++ avec un focus sur les performances et le réseau.",
-                proj5Title: "Arcade",
-                proj5Desc: "Une borne d'arcade logicielle en C++ permettant de charger dynamiquement des jeux et des bibliothèques graphiques (SFML, SDL2, NCURSES).",
-                proj6Title: "Area",
-                proj6Desc: "Un tableau de bord web interactif qui connecte divers services tiers via des widgets personnalisables. Développé avec React et Node.js.",
-                skillsTitle: "Compétences Techniques",
-                skillsLanguages: "Langages",
-                skillsFrameworks: "Frameworks & Bibliothèques",
-                skillsTools: "Outils & Plateformes",
-                educationTitle: "Formation",
-                edu1Title: "Master en Technologies de l'Information",
-                edu1Desc: "Cursus intensif en 5 ans basé sur une pédagogie par projets, développant une forte expertise technique et une grande capacité d'adaptation. L'accent est mis sur l'innovation et la réalisation de projets complexes en équipe.",
-                edu2Title: "Échange Universitaire",
-                edu2Desc: "Semestre d'étude au sein d'une des principales universités technologiques du Japon, avec des cours axés sur l'ingénierie et les technologies émergentes. Immersion culturelle et linguistique intensive.",
-                edu3Title: "Baccalauréat STI2D (Mention Bien)",
-                edu3Desc: "Option SIN (Systèmes d'Information et Numérique), offrant une première approche solide de l'informatique, de l'électronique et des réseaux.",
+                pageTitle: "Hakim Redjem - AI & Full-Stack Engineer",
+                navHome: "Accueil", navExperience: "Expériences", navProjects: "Projets", navSkills: "Compétences", navEducation: "Formation",
+                navHomeMobile: "Accueil", navExperienceMobile: "Expériences", navProjectsMobile: "Projets", navSkillsMobile: "Compétences", navEducationMobile: "Formation",
+                homeTitle: "Architecturer l'IA & le Code <br><span class='text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-500'>de 0 à 1.</span>",
+                homeSubtitle: "Je suis Hakim Redjem, Ingénieur Logiciel spécialisé en IA. Je construis des pipelines complexes et je transforme des défis techniques en produits robustes.",
+                experienceTitle: "Expérience Opérationnelle",
+                exp1Title: "Ingénieur IA & R&D",
+                exp1Li1: "Architecture 'from scratch' d'un pipeline d'Intelligence Artificielle pour l'upgrade d'équipements médicaux en blocs opératoires.",
+                exp1Li2: "Fine-tuning du modèle Whisper (PyTorch) pour la retranscription et le tagging automatique de vidéos chirurgicales de haute précision.",
+                exp1Li3: "Développement d'un Chatbot spécialisé en cardiologie (C# ASP.NET/Angular). Projet présenté par le CEO au ARCH Cardiology Symposium 2024.",
+                exp2Title: "Développeur Full-Stack Logiciel",
+                exp2Li1: "Ownership total du logiciel de diagnostic 'Power10' en tant que seul développeur pour le support IT national.",
+                exp2Li2: "Refonte de l'infrastructure et intégration d'Active Directory et AirWatch pour la gestion des flottes mobiles.",
+                exp2Li3: "Implémentation de features backend complexes (localisation instantanée de machines via numéros de téléphone).",
+                exp3Title: "Mentor & Instructeur Logiciel",
+                exp3Li1: "Enseignement de la 'méthode Epitech' (autonomie pure et apprentissage par la pratique) lors d'un bootcamp intensif.",
+                exp3Li2: "Supervision architecturale d'étudiants dans la création from scratch de plateformes web (PHP/SQL).",
+                projectsTitle: "R&D & Projets Majeurs",
+                githubLink: "Voir l'architecture sur GitHub",
+                proj1Title: "Laval Game Jam (1er Prix)",
+                proj1Desc: "Développement en 48h chrono d'un RPG en monde ouvert en Réalité Augmentée (AR). L'innovation ? L'utilisation poussée de l'Hololens 2 : casting de sorts via l'eye-tracking, la reconnaissance vocale et le hand-tracking.",
+                proj4Title: "Moteur C++ : R-Type",
+                proj4Desc: "Création d'un moteur de jeu ECS (Entity Component System) custom en C++ pour un jeu multijoueur. Focus intense sur l'optimisation réseau et la gestion de la mémoire.",
+                proj6Title: "API Hub : Area",
+                proj6Desc: "Plateforme d'automatisation connectant divers micro-services. Architecture backend robuste avec gestion d'authentification OAuth2.",
+                skillsTitle: "Stack Technologique",
+                skillsLanguages: "Core Languages", skillsFrameworks: "AI, Libraries & Frameworks", skillsTools: "Cloud, DevOps & Tools",
+                educationTitle: "Background Académique",
+                edu1Title: "Bachelor en Technologies de l'Information",
+                edu1Desc: "Formation d'ingénierie 100% basée sur la réalisation de projets complexes. Pas de cours théoriques, uniquement de la pratique intensive, de l'architecture logicielle et de la livraison de code répondant aux standards de l'industrie.",
+                edu2Title: "Études Technologiques Internationales",
+                edu2Desc: "Une année complète en immersion au sein de l'une des universités les plus prestigieuses du Japon. Focalisation sur les technologies émergentes et validation de mon aisance à évoluer dans un environnement tokyoïte."
             },
             en: {
-                pageTitle: "Hakim Redjem - Developer Portfolio",
-                navHome: "Home",
-                navExperience: "Experience",
-                navProjects: "Projects",
-                navSkills: "Skills",
-                navEducation: "Education",
-                navHomeMobile: "Home",
-                navExperienceMobile: "Experience",
-                navProjectsMobile: "Projects",
-                navSkillsMobile: "Skills",
-                navEducationMobile: "Education",
-                homeTitle: "Hello, I'm Hakim Redjem.",
-                homeSubtitle: "A versatile software developer passionate about new technologies, 3D, and solving complex problems.",
+                pageTitle: "Hakim Redjem - AI & Full-Stack Engineer",
+                navHome: "Home", navExperience: "Experience", navProjects: "Projects", navSkills: "Skills", navEducation: "Education",
+                navHomeMobile: "Home", navExperienceMobile: "Experience", navProjectsMobile: "Projects", navSkillsMobile: "Skills", navEducationMobile: "Education",
+                homeTitle: "Building AI-native systems <br><span class='text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-500'>from 0 to 1.</span>",
+                homeSubtitle: "I'm Hakim Redjem, an AI & Full-Stack Software Engineer. I architect complex pipelines and turn ambitious concepts into robust, production-ready products.",
                 experienceTitle: "Professional Experience",
-                exp1Title: "AI R&D Intern",
-                exp1Li1: "Developed AI solutions for surgical video analysis, including patient identity recognition and masking using computer vision.",
-                exp1Li2: "Created an ASR pipeline (re-trained Whisper) to extract metadata (speakers, tags, summary) from recordings.",
-                exp1Li3: "Developed a showcase website (C# ASP.NET, Angular) with a chatbot to explain procedures to users.",
-                exp2Title: "Instructor - Iseg Spring Code Camp",
-                exp2Li1: "Led a two-week bootcamp to introduce ISEG students to the Epitech methodology.",
-                exp2Li2: "Taught web development fundamentals (HTML, CSS, PHP, SQL) with the goal of creating an e-commerce site.",
-                exp2Li3: "Provided daily student support, reviewed challenges, and conducted individual grading sessions.",
-                exp3Title: "C# Desktop Application Developer Intern",
-                exp3Li1: "Independently redesigned and rebuilt the internal 'Power10' application in C# WPF.",
-                exp3Li2: "Collaborated directly with IT support to define requirements and implement new features.",
-                exp3Li3: "Modernized the user interface and improved the user experience.",
-                projectsTitle: "Personal Projects",
-                githubLink: "View project on GitHub",
-                proj1Title: "Laval Game Jam 2022",
-                proj1Desc: "An Augmented Reality (AR) game developed in 48 hours on the theme of accessibility. Our team won first prize. The project is an open-world RPG using Hololens 2 capabilities, with interactions via eye-tracking, gesture, and voice recognition to cast spells.",
-                proj2Title: "Epitech RPG",
-                proj2Desc: "A complete 2D role-playing game developed in C, including a game engine, quest system, combat, and more.",
-                proj3Title: "MyDexPoGo",
-                proj3Desc: "A cross-platform mobile application that lists all Pokémon from Pokémon Go and their variations, with stats, using multiple APIs.",
-                proj4Title: "R-Type",
-                proj4Desc: "A 4-player cooperative shooter based on the classic R-Type, developed in C++ with a focus on performance and networking.",
-                proj5Title: "Arcade",
-                proj5Desc: "A C++ software arcade cabinet that can dynamically load games and graphics libraries (SFML, SDL2, NCURSES).",
-                proj6Title: "Area",
-                proj6Desc: "An interactive web dashboard that connects various third-party services via customizable widgets. Developed with React and Node.js.",
-                skillsTitle: "Technical Skills",
-                skillsLanguages: "Languages",
-                skillsFrameworks: "Frameworks & Libraries",
-                skillsTools: "Tools & Platforms",
-                educationTitle: "Education",
-                edu1Title: "Master's Degree in Information Technology",
-                edu1Desc: "Intensive 5-year project-based curriculum, developing strong technical expertise and high adaptability. Focus on innovation and complex team-based projects.",
-                edu2Title: "University Exchange",
-                edu2Desc: "Semester of study at one of Japan's leading technological universities, with courses focused on engineering and emerging technologies. Intensive cultural and linguistic immersion.",
-                edu3Title: "High School Diploma in Technology (with Honors)",
-                edu3Desc: "Specialized in Information and Digital Systems (SIN), providing a solid initial foundation in computer science, electronics, and networks.",
+                exp1Title: "AI R&D Engineer",
+                exp1Li1: "Architected a complete medical AI pipeline from scratch to upgrade hardware setups in operating rooms.",
+                exp1Li2: "Fine-tuned OpenAI's Whisper model (PyTorch) to transcribe and automatically tag high-precision surgical videos.",
+                exp1Li3: "Engineered a specialized cardiology chatbot (C# ASP.NET/Angular). Work was featured by the CEO at the 2024 ARCH Cardiology Symposium.",
+                exp2Title: "Full-Stack Software Engineer",
+                exp2Li1: "Took full ownership of 'Power10', an internal diagnostic tool, acting as the sole developer for the national IT support team.",
+                exp2Li2: "Revamped infrastructure and integrated Active Directory and AirWatch for mobile fleet tracking.",
+                exp2Li3: "Implemented advanced backend features (e.g., instant PC geolocation via user phone numbers).",
+                exp3Title: "Software Engineering Mentor",
+                exp3Li1: "Taught the 'Epitech way' (pure autonomy and project-based learning) during an intensive 2-week coding bootcamp.",
+                exp3Li2: "Provided architectural guidance to students building web platforms from scratch (PHP/SQL).",
+                projectsTitle: "R&D & Key Projects",
+                githubLink: "View architecture on GitHub",
+                proj1Title: "Laval Game Jam (1st Prize)",
+                proj1Desc: "Developed an open-world AR RPG in exactly 48 hours. The core innovation was leveraging the HoloLens 2 capabilities: casting spells via eye-tracking, voice recognition, and hand-tracking.",
+                proj4Title: "C++ Engine: R-Type",
+                proj4Desc: "Created a custom ECS (Entity Component System) game engine in C++ for a multiplayer game. Intense focus on memory management and UDP/TCP network optimization.",
+                proj6Title: "API Hub: Area",
+                proj6Desc: "Automation platform connecting various microservices. Built a robust backend architecture featuring secure OAuth2 authentication flows.",
+                skillsTitle: "Tech Stack",
+                skillsLanguages: "Core Languages", skillsFrameworks: "AI, Libraries & Frameworks", skillsTools: "Cloud, DevOps & Tools",
+                educationTitle: "Academic Background",
+                edu1Title: "Bachelor's Degree in Information Technology",
+                edu1Desc: "100% project-based engineering curriculum. No traditional classes—only intensive practice, software architecture, and delivering code that meets strict industry standards.",
+                edu2Title: "International Technology Exchange",
+                edu2Desc: "A full year of immersive study at one of Japan's leading technological universities. Focused on emerging technologies while validating my ability to seamlessly adapt to a Tokyo-based professional environment."
             }
         };
 
         const skillsData = {
             langages: [
-                { name: 'C#', icon: 'csharp/csharp-original.svg' },
-                { name: 'C++', icon: 'cplusplus/cplusplus-original.svg' },
-                { name: 'Dart', icon: 'dart/dart-original.svg' },
-                { name: 'GLSL', icon: 'fas fa-microchip', isClass: true, isFa: true },
-                { name: 'Java', icon: 'java/java-original.svg' },
-                { name: 'JavaScript', icon: 'javascript/javascript-original.svg' },
-                { name: 'Kotlin', icon: 'kotlin/kotlin-original.svg' },
-                { name: 'PHP', icon: 'php/php-original.svg' },
                 { name: 'Python', icon: 'python/python-original.svg' },
+                { name: 'C++', icon: 'cplusplus/cplusplus-original.svg' },
+                { name: 'C#', icon: 'csharp/csharp-original.svg' },
+                { name: 'Rust', icon: 'rust/rust-plain.svg', invert: true },
+                { name: 'JavaScript', icon: 'javascript/javascript-original.svg' },
                 { name: 'SQL', icon: 'fas fa-database', isClass: true, isFa: true },
-                { name: 'Shell', icon: 'bash/bash-original.svg'},
-                { name: 'Swift', icon: 'swift/swift-original.svg' }
             ],
             frameworks: [
-                { name: 'Angular', icon: 'angularjs/angularjs-original.svg' },
-                { name: 'ASP.NET', icon: 'dotnetcore/dotnetcore-original.svg' },
-                { name: 'CSFML', icon: 'fas fa-cube', isClass: true, isFa: true },
-                { name: 'Flutter', icon: 'flutter/flutter-original.svg' },
-                { name: 'Next.js', icon: 'nextjs/nextjs-original.svg', invert: true },
-                { name: 'Node.js', icon: 'nodejs/nodejs-original.svg' },
-                { name: 'OpenGL', icon: 'opengl/opengl-original.svg' },
                 { name: 'PyTorch', icon: 'pytorch/pytorch-original.svg' },
-                { name: 'React Native', icon: 'react/react-original.svg' },
-                { name: 'SDL2', icon: 'sdl/sdl-original.svg' },
-                { name: 'SFML', icon: 'sfml/sfml-original.svg' },
                 { name: 'TensorFlow', icon: 'tensorflow/tensorflow-original.svg' },
-                { name: 'Three.js', icon: 'threejs/threejs-original.svg', invert: true },
-                { name: 'Unity', icon: 'unity/unity-original.svg', invert: true },
-                { name: 'Vue.js', icon: 'vuejs/vuejs-original.svg' }
+                { name: 'ASP.NET', icon: 'dotnetcore/dotnetcore-original.svg' },
+                { name: 'Angular', icon: 'angularjs/angularjs-original.svg' },
+                { name: 'React', icon: 'react/react-original.svg' },
+                { name: 'Node.js', icon: 'nodejs/nodejs-original.svg' },
             ],
             outils: [
-                { name: 'Apache', icon: 'apache/apache-original-wordmark.svg' },
+                { name: 'Docker', icon: 'docker/docker-original.svg' },
                 { name: 'AWS', icon: 'amazonwebservices/amazonwebservices-original-wordmark.svg', invert: true },
                 { name: 'Azure', icon: 'azure/azure-original.svg' },
-                { name: 'Confluence', icon: 'confluence/confluence-original.svg' },
-                { name: 'Docker', icon: 'docker/docker-original.svg' },
-                { name: 'Figma', icon: 'figma/figma-original.svg' },
-                { name: 'Firebase', icon: 'firebase/firebase-plain.svg' },
                 { name: 'Git', icon: 'git/git-original.svg' },
-                { name: 'Hololens 2', icon: 'fas fa-vr-cardboard', isClass: true, isFa: true },
                 { name: 'Jenkins', icon: 'jenkins/jenkins-original.svg' },
-                { name: 'Jira', icon: 'jira/jira-original.svg' },
-                { name: 'Kubernetes', icon: 'kubernetes/kubernetes-plain.svg' },
-                { name: 'Makefile', icon: 'fas fa-file-code', isClass: true, isFa: true },
-                { name: 'MySQL', icon: 'mysql/mysql-original.svg' },
-                { name: 'Nginx', icon: 'nginx/nginx-original.svg' },
-                { name: 'PostgreSQL', icon: 'postgresql/postgresql-original.svg' }
+                { name: 'Linux', icon: 'linux/linux-original.svg' },
             ]
         };
 
         function populateSkills() {
             const createCard = (skill) => {
                 const card = document.createElement('div');
-                card.className = 'skill-card flex flex-col items-center justify-center p-4 rounded-lg';
+                card.className = 'skill-card flex flex-col items-center justify-center p-4 rounded-xl';
                 if (skill.isClass && skill.isFa) {
-                    card.innerHTML = `<i class="${skill.icon} text-5xl h-14 w-14 mb-2 flex items-center justify-center text-gray-300"></i><span class="text-sm">${skill.name}</span>`;
+                    card.innerHTML = `<i class="${skill.icon} text-4xl h-12 w-12 mb-3 flex items-center justify-center text-slate-300"></i><span class="text-sm font-semibold tracking-wide">${skill.name}</span>`;
                 } else if (skill.icon.endsWith('.svg')) {
-                    card.innerHTML = `<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${skill.icon}" alt="Logo de ${skill.name}" class="h-14 w-14 mb-2 ${skill.invert ? 'filter invert' : ''}"><span class="text-sm">${skill.name}</span>`;
+                    card.innerHTML = `<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${skill.icon}" alt="${skill.name}" class="h-12 w-12 mb-3 ${skill.invert ? 'filter invert' : ''}"><span class="text-sm font-semibold tracking-wide">${skill.name}</span>`;
                 }
                 return card;
             };
@@ -542,7 +430,7 @@
         
         const langSwitcher = document.getElementById('lang-switcher');
         const langSwitcherMobile = document.getElementById('lang-switcher-mobile');
-        let currentLang = localStorage.getItem('language') || 'fr';
+        let currentLang = localStorage.getItem('language') || 'en'; // Default to EN for TokyoDev
 
         function setLanguage(lang) {
             currentLang = lang;
@@ -556,10 +444,10 @@
             document.querySelectorAll('[data-translate-key]').forEach(element => {
                 const key = element.getAttribute('data-translate-key');
                 if (translations[lang][key]) {
-                    if (key === 'githubLink') {
-                         element.innerHTML = `${translations[lang][key]} <i class="fas fa-arrow-right ml-1"></i>`;
+                    if (key === 'githubLink' || key === 'homeTitle') {
+                        element.innerHTML = translations[lang][key];
                     } else {
-                         element.textContent = translations[lang][key];
+                        element.textContent = translations[lang][key];
                     }
                 }
             });
@@ -567,24 +455,21 @@
             populateSkills();
         }
 
-        const toggleLanguage = () => {
-            const newLang = currentLang === 'fr' ? 'en' : 'fr';
-            setLanguage(newLang);
-        };
-
-        langSwitcher.addEventListener('click', toggleLanguage);
-        langSwitcherMobile.addEventListener('click', toggleLanguage);
-        
+        langSwitcher.addEventListener('click', () => setLanguage(currentLang === 'fr' ? 'en' : 'fr'));
+        langSwitcherMobile.addEventListener('click', () => setLanguage(currentLang === 'fr' ? 'en' : 'fr'));
         setLanguage(currentLang);
-        
+
+        /* --- THREE.JS DEEP TECH ANIMATIONS --- */
         let scene, camera, renderer, clock;
         const threeContainer = document.getElementById('three-container');
         let currentAnimationId = 0;
-        const mouse = new THREE.Vector2();
-        const raycaster = new THREE.Raycaster();
+        const mouse = new THREE.Vector2(0, 0);
+        let targetMouse = new THREE.Vector2(0, 0);
 
         function initBaseScene() {
             scene = new THREE.Scene();
+            // Fog matches Tailwind's Slate-900 (#0f172a) for depth integration
+            scene.fog = new THREE.FogExp2(0x0f172a, 0.035); 
             camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
             renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
             renderer.setSize(window.innerWidth, window.innerHeight);
@@ -602,187 +487,212 @@
         });
         
         window.addEventListener('mousemove', (event) => {
-            mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-            mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+            targetMouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+            targetMouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
         });
 
         const animations = {
+            // IDEA 1: Neural Network Constellation
             accueil: {
                 particles: null,
+                lines: null,
                 init: () => {
-                    const particlesGeometry = new THREE.BufferGeometry();
-                    const count = 5000;
-                    const positions = new Float32Array(count * 3);
-                    for(let i = 0; i < count * 3; i++) positions[i] = (Math.random() - 0.5) * 20;
-                    particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-                    const particlesMaterial = new THREE.PointsMaterial({ size: 0.02, sizeAttenuation: true, color: 0x3b82f6 });
-                    animations.accueil.particles = new THREE.Points(particlesGeometry, particlesMaterial);
-                    scene.add(animations.accueil.particles);
-                    camera.position.z = 5;
-                },
-                animate: () => {
-                    const elapsedTime = clock.getElapsedTime();
-                    animations.accueil.particles.rotation.y = elapsedTime * 0.1;
-                    camera.position.x += (mouse.x * 2 - camera.position.x) * 0.02;
-                    camera.position.y += (-mouse.y * 2 - camera.position.y) * 0.02;
-                    camera.lookAt(scene.position);
-                }
-            },
-            experiences: {
-                particles: null,
-                init: () => {
-                    const particleCount = 300;
-                    const positions = new Float32Array(particleCount * 3);
-                    const velocities = new Float32Array(particleCount * 3);
-                    for (let i = 0; i < particleCount; i++) {
-                        positions[i * 3 + 0] = THREE.MathUtils.randFloatSpread(20);
-                        positions[i * 3 + 1] = THREE.MathUtils.randFloatSpread(20);
-                        positions[i * 3 + 2] = THREE.MathUtils.randFloatSpread(20);
-                        velocities[i * 3 + 0] = 0;
-                        velocities[i * 3 + 1] = 0;
-                        velocities[i * 3 + 2] = 0;
-                    }
+                    const particleCount = 150;
                     const geometry = new THREE.BufferGeometry();
-                    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-                    geometry.setAttribute('velocity', new THREE.BufferAttribute(velocities, 3));
-                    
-                    const material = new THREE.PointsMaterial({ color: 0x60a5fa, size: 0.1, transparent: true, blending: THREE.AdditiveBlending, sizeAttenuation: true });
-                    animations.experiences.particles = new THREE.Points(geometry, material);
-                    scene.add(animations.experiences.particles);
-                    camera.position.z = 12;
-                },
-                animate: () => {
-                    const particles = animations.experiences.particles;
-                    const positions = particles.geometry.attributes.position.array;
-                    const velocities = particles.geometry.attributes.velocity.array;
-                    
-                    raycaster.setFromCamera(mouse, camera);
-                    const mouseVector = new THREE.Vector3(mouse.x, mouse.y, 0.5).unproject(camera);
-                    
-                    for (let i = 0; i < positions.length / 3; i++) {
-                        const i3 = i * 3;
-                        const particlePos = new THREE.Vector3(positions[i3], positions[i3 + 1], positions[i3 + 2]);
-                        
-                        const dist = particlePos.distanceTo(mouseVector);
-                        if (dist < 3) {
-                            const force = (3 - dist) * 0.01;
-                            const repulsion = new THREE.Vector3().subVectors(particlePos, mouseVector).normalize().multiplyScalar(force);
-                            velocities[i3] += repulsion.x;
-                            velocities[i3 + 1] += repulsion.y;
-                            velocities[i3 + 2] += repulsion.z;
-                        }
+                    const positions = new Float32Array(particleCount * 3);
+                    const velocities = [];
 
-                        velocities[i3] *= 0.95;
-                        velocities[i3 + 1] *= 0.95;
-                        velocities[i3 + 2] *= 0.95;
-
-                        positions[i3] += velocities[i3];
-                        positions[i3 + 1] += velocities[i3 + 1];
-                        positions[i3 + 2] += velocities[i3 + 2];
+                    for (let i = 0; i < particleCount; i++) {
+                        positions[i * 3] = (Math.random() - 0.5) * 20;
+                        positions[i * 3 + 1] = (Math.random() - 0.5) * 20;
+                        positions[i * 3 + 2] = (Math.random() - 0.5) * 10 - 5;
+                        velocities.push({
+                            x: (Math.random() - 0.5) * 0.02,
+                            y: (Math.random() - 0.5) * 0.02,
+                            z: (Math.random() - 0.5) * 0.02
+                        });
                     }
 
-                    particles.geometry.attributes.position.needsUpdate = true;
-                    particles.rotation.y += 0.0005;
-                }
-            },
-            projets: {
-                mesh: null,
-                init: () => {
-                    const geometry = new THREE.SphereGeometry(3, 32, 32);
-                    const material = new THREE.MeshBasicMaterial({color: 0xec4899, wireframe: true});
-                    animations.projets.mesh = new THREE.Mesh(geometry, material);
-                    scene.add(animations.projets.mesh);
-                    camera.position.z = 10;
+                    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+                    const material = new THREE.PointsMaterial({ color: 0x8b5cf6, size: 0.15, transparent: true, opacity: 0.8 });
+                    animations.accueil.particles = new THREE.Points(geometry, material);
+                    animations.accueil.velocities = velocities;
+                    scene.add(animations.accueil.particles);
+
+                    // Lines
+                    const lineMaterial = new THREE.LineBasicMaterial({ color: 0x60a5fa, transparent: true, opacity: 0.15 });
+                    const lineGeometry = new THREE.BufferGeometry();
+                    const linePositions = new Float32Array(particleCount * particleCount * 3);
+                    lineGeometry.setAttribute('position', new THREE.BufferAttribute(linePositions, 3));
+                    animations.accueil.lines = new THREE.LineSegments(lineGeometry, lineMaterial);
+                    scene.add(animations.accueil.lines);
+
+                    camera.position.z = 8;
                 },
                 animate: () => {
-                    animations.projets.mesh.rotation.x += 0.001;
-                    animations.projets.mesh.rotation.y += 0.002;
-                }
-            },
-            competences: {
-                group: null,
-                lights: [],
-                init: () => {
-                    animations.competences.group = new THREE.Group();
-                    const material = new THREE.MeshStandardMaterial({ color: 0x4f46e5, roughness: 0.5, metalness: 0.1 });
-                    const boxes = [];
-                    const maxLevel = 3;
-                    const baseSize = 9;
+                    mouse.lerp(targetMouse, 0.05); // Smooth mouse
+                    camera.position.x += (mouse.x * 2 - camera.position.x) * 0.05;
+                    camera.position.y += (mouse.y * 2 - camera.position.y) * 0.05;
+                    camera.lookAt(scene.position);
 
-                    function generateSponge(level, size, position) {
-                        if (level === 0) {
-                            boxes.push(new THREE.Matrix4().compose(position, new THREE.Quaternion(), new THREE.Vector3(1,1,1)));
-                            return;
-                        }
-                        const newSize = size / 3;
-                        for (let x=-1; x<=1; x++) for (let y=-1; y<=1; y++) for (let z=-1; z<=1; z++) {
-                            if (Math.abs(x) + Math.abs(y) + Math.abs(z) > 1) {
-                                generateSponge(level-1, newSize, new THREE.Vector3(position.x+x*newSize, position.y+y*newSize, position.z+z*newSize));
+                    const positions = animations.accueil.particles.geometry.attributes.position.array;
+                    const vels = animations.accueil.velocities;
+                    const particleCount = vels.length;
+
+                    // Move particles
+                    for (let i = 0; i < particleCount; i++) {
+                        positions[i * 3] += vels[i].x;
+                        positions[i * 3 + 1] += vels[i].y;
+                        positions[i * 3 + 2] += vels[i].z;
+
+                        // Bounds
+                        if (Math.abs(positions[i * 3]) > 10) vels[i].x *= -1;
+                        if (Math.abs(positions[i * 3 + 1]) > 10) vels[i].y *= -1;
+                        if (Math.abs(positions[i * 3 + 2] + 5) > 5) vels[i].z *= -1;
+                    }
+                    animations.accueil.particles.geometry.attributes.position.needsUpdate = true;
+
+                    // Update Neural Lines based on distance
+                    const linePositions = animations.accueil.lines.geometry.attributes.position.array;
+                    let lineIndex = 0;
+                    for (let i = 0; i < particleCount; i++) {
+                        for (let j = i + 1; j < particleCount; j++) {
+                            const dx = positions[i * 3] - positions[j * 3];
+                            const dy = positions[i * 3 + 1] - positions[j * 3 + 1];
+                            const dz = positions[i * 3 + 2] - positions[j * 3 + 2];
+                            const dist = Math.sqrt(dx*dx + dy*dy + dz*dz);
+
+                            if (dist < 2.5) {
+                                linePositions[lineIndex++] = positions[i * 3];
+                                linePositions[lineIndex++] = positions[i * 3 + 1];
+                                linePositions[lineIndex++] = positions[i * 3 + 2];
+                                linePositions[lineIndex++] = positions[j * 3];
+                                linePositions[lineIndex++] = positions[j * 3 + 1];
+                                linePositions[lineIndex++] = positions[j * 3 + 2];
                             }
                         }
                     }
-                    generateSponge(maxLevel, baseSize, new THREE.Vector3(0,0,0));
-                    const boxSize = baseSize / Math.pow(3, maxLevel);
-                    const geometry = new THREE.BoxGeometry(boxSize, boxSize, boxSize);
-                    const instancedMesh = new THREE.InstancedMesh(geometry, material, boxes.length);
-                    boxes.forEach((matrix, i) => instancedMesh.setMatrixAt(i, matrix));
-                    animations.competences.group.add(instancedMesh);
-                    scene.add(animations.competences.group);
+                    animations.accueil.lines.geometry.setDrawRange(0, lineIndex / 3);
+                    animations.accueil.lines.geometry.attributes.position.needsUpdate = true;
+                }
+            },
+            // IDEA 2: Whisper Audio Wave
+            experiences: {
+                bars: [],
+                group: null,
+                init: () => {
+                    animations.experiences.group = new THREE.Group();
+                    const barCount = 64;
+                    const radius = 5;
+                    const geometry = new THREE.BoxGeometry(0.2, 1, 0.2);
+                    const material = new THREE.MeshStandardMaterial({ color: 0x60a5fa, metalness: 0.5, roughness: 0.2, emissive: 0x1e3a8a });
 
-                    animations.competences.lights = [];
-                    for(let i=0; i<4; i++){
-                        const light = new THREE.PointLight(0xffffff, 5, 15);
-                        light.position.set((Math.random()-0.5)*baseSize*0.6, (Math.random()-0.5)*baseSize*0.6, (Math.random()-0.5)*baseSize*0.6);
-                        animations.competences.group.add(light);
-                        animations.competences.lights.push(light);
+                    for (let i = 0; i < barCount; i++) {
+                        const mesh = new THREE.Mesh(geometry, material);
+                        const angle = (i / barCount) * Math.PI * 2;
+                        mesh.position.x = Math.cos(angle) * radius;
+                        mesh.position.z = Math.sin(angle) * radius;
+                        mesh.lookAt(0, 0, 0);
+                        animations.experiences.bars.push({ mesh, angle });
+                        animations.experiences.group.add(mesh);
                     }
-                    camera.position.set(0, 0, 15);
+                    
+                    scene.add(animations.experiences.group);
+                    
+                    const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+                    const pointLight = new THREE.PointLight(0x8b5cf6, 10, 20);
+                    pointLight.position.set(0, 0, 0);
+                    scene.add(ambientLight, pointLight);
+
+                    camera.position.set(0, 4, 12);
+                    camera.lookAt(0,0,0);
                 },
                 animate: () => {
-                    const elapsedTime = clock.getElapsedTime();
-                    camera.position.z -= 0.02;
-                    if(camera.position.z < -5) camera.position.z = 15;
-                    animations.competences.group.rotation.x = elapsedTime * 0.05;
-                    animations.competences.group.rotation.y = elapsedTime * 0.1;
-                    animations.competences.lights.forEach((light, i) => {
-                        light.position.x = Math.sin(elapsedTime*0.6*(i+1)) * 4;
-                        light.position.y = Math.cos(elapsedTime*0.4*(i+1)) * 4;
+                    const time = clock.getElapsedTime();
+                    mouse.lerp(targetMouse, 0.05);
+                    animations.experiences.group.rotation.y = time * 0.2 + mouse.x * 0.5;
+                    animations.experiences.group.rotation.x = mouse.y * 0.2;
+
+                    animations.experiences.bars.forEach((bar, index) => {
+                        // Math to simulate Audio frequencies / Whisper processing
+                        const height = Math.abs(Math.sin(time * 2 + bar.angle * 3) * Math.cos(time * 1.5 + bar.angle * 5)) * 4 + 0.5;
+                        bar.mesh.scale.y = height;
+                        bar.mesh.position.y = height / 2 - 2; // Keep base grounded
+                    });
+                }
+            },
+            // IDEA 3: Data Pipeline
+            projets: {
+                particles: null,
+                init: () => {
+                    // Create points along a complex Knot path
+                    const geometry = new THREE.TorusKnotGeometry(4, 1.5, 200, 32);
+                    const material = new THREE.PointsMaterial({ 
+                        color: 0x8b5cf6, 
+                        size: 0.1, 
+                        blending: THREE.AdditiveBlending,
+                        transparent: true
+                    });
+                    
+                    // Convert mesh vertices to points
+                    const pointsGeo = new THREE.BufferGeometry();
+                    pointsGeo.setAttribute('position', geometry.getAttribute('position'));
+                    
+                    animations.projets.particles = new THREE.Points(pointsGeo, material);
+                    scene.add(animations.projets.particles);
+                    camera.position.z = 12;
+                },
+                animate: () => {
+                    const time = clock.getElapsedTime();
+                    mouse.lerp(targetMouse, 0.05);
+                    animations.projets.particles.rotation.x = time * 0.1 + mouse.y * 0.5;
+                    animations.projets.particles.rotation.y = time * 0.2 + mouse.x * 0.5;
+                    
+                    // Pulsing effect
+                    const scale = 1 + Math.sin(time * 2) * 0.05;
+                    animations.projets.particles.scale.set(scale, scale, scale);
+                }
+            },
+            // Floating Tech Grid for Skills/Education
+            competences: {
+                group: null,
+                init: () => {
+                    animations.competences.group = new THREE.Group();
+                    const geometry = new THREE.IcosahedronGeometry(0.5, 0);
+                    const material = new THREE.MeshBasicMaterial({ color: 0x60a5fa, wireframe: true, transparent: true, opacity: 0.3 });
+                    
+                    for(let i=0; i<50; i++) {
+                        const mesh = new THREE.Mesh(geometry, material);
+                        mesh.position.set((Math.random()-0.5)*20, (Math.random()-0.5)*20, (Math.random()-0.5)*10 - 5);
+                        mesh.rotation.set(Math.random()*Math.PI, Math.random()*Math.PI, 0);
+                        animations.competences.group.add(mesh);
+                    }
+                    scene.add(animations.competences.group);
+                    camera.position.z = 8;
+                },
+                animate: () => {
+                    const time = clock.getElapsedTime();
+                    mouse.lerp(targetMouse, 0.05);
+                    camera.position.x += (mouse.x * 3 - camera.position.x) * 0.05;
+                    camera.position.y += (mouse.y * 3 - camera.position.y) * 0.05;
+                    camera.lookAt(scene.position);
+                    animations.competences.group.rotation.y = time * 0.05;
+                    animations.competences.group.children.forEach(child => {
+                        child.rotation.x += 0.01;
+                        child.rotation.y += 0.01;
                     });
                 }
             },
             formation: {
-                group: null,
-                init: () => {
-                    animations.formation.group = new THREE.Group();
-                    const material = new THREE.MeshBasicMaterial({ color: 0x8b5cf6, blending: THREE.AdditiveBlending, transparent: true, depthWrite: false, side: THREE.DoubleSide });
-                    for (let i = 0; i < 300; i++) {
-                        const geometry = new THREE.PlaneGeometry(0.5, 0.5);
-                        const mesh = new THREE.Mesh(geometry, material);
-                        mesh.position.set(THREE.MathUtils.randFloatSpread(15), THREE.MathUtils.randFloatSpread(15), THREE.MathUtils.randFloatSpread(15));
-                        mesh.rotation.set(Math.random()*Math.PI, Math.random()*Math.PI, Math.random()*Math.PI);
-                        animations.formation.group.add(mesh);
-                    }
-                    scene.add(animations.formation.group);
-                    camera.position.z = 5;
-                },
-                animate: () => {
-                    const elapsedTime = clock.getElapsedTime();
-                    camera.position.x = Math.sin(elapsedTime * 0.1) * 2;
-                    camera.lookAt(scene.position);
-                    animations.formation.group.rotation.y += 0.001;
-                }
+                init: () => { animations.competences.init(); },
+                animate: () => { animations.competences.animate(); }
             }
         };
 
         function switchPage(hash) {
             if (currentAnimationId) cancelAnimationFrame(currentAnimationId);
             initBaseScene();
-            const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
-            scene.add(ambientLight);
-            const directionalLight = new THREE.DirectionalLight(0xffffff, 1.0);
-            directionalLight.position.set(5, 10, 7.5);
-            scene.add(directionalLight);
-
+            
             document.querySelector('.page.active')?.classList.remove('active');
             document.querySelector(hash.replace('#', '#page-'))?.classList.add('active');
             document.querySelectorAll('.nav-link, .nav-link-mobile').forEach(l => l.classList.remove('active'));
@@ -790,10 +700,9 @@
             
             const animationKey = hash.substring(1);
             if (animations[animationKey]) {
-                const anim = animations[animationKey];
-                anim.init();
+                animations[animationKey].init();
                 function runAnimation() {
-                    anim.animate();
+                    animations[animationKey].animate();
                     renderer.render(scene, camera);
                     currentAnimationId = requestAnimationFrame(runAnimation);
                 }
@@ -804,11 +713,10 @@
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenuCloseButton = document.getElementById('mobile-menu-close-button');
         const mobileMenu = document.getElementById('mobile-menu');
-        const mobileNavLinks = document.querySelectorAll('.nav-link-mobile');
         
         mobileMenuButton.addEventListener('click', () => mobileMenu.classList.remove('hidden'));
         mobileMenuCloseButton.addEventListener('click', () => mobileMenu.classList.add('hidden'));
-        mobileNavLinks.forEach(link => {
+        document.querySelectorAll('.nav-link-mobile').forEach(link => {
             link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
         });
 
@@ -820,15 +728,12 @@
                 const target = document.querySelector(this.getAttribute('href').replace('#', '#page-'));
                 if (target) {
                      e.preventDefault();
-                     const newHash = this.getAttribute('href');
-                     window.location.hash = newHash;
+                     window.location.hash = this.getAttribute('href');
                 }
             });
         });
 
-        window.addEventListener('hashchange', () => {
-            switchPage(window.location.hash || '#accueil');
-        });
+        window.addEventListener('hashchange', () => switchPage(window.location.hash || '#accueil'));
 
     </script>
 </body>
