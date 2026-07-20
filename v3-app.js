@@ -5,6 +5,8 @@ const STATE = {
   lang: localStorage.getItem("hr_lang") || "en",
   screen: "hub",
   warping: false,
+  githubRepo: null,
+  steamGame: null,
 };
 const SCREENS = ["hub", "experience", "projects", "skills", "education"];
 
@@ -36,6 +38,7 @@ function warp(to) {
     STATE.screen = to;
     updateDock();
     inn.scrollTop = 0;
+    if (to === "education") initEduMap();
 
     setTimeout(() => {
       inn.classList.remove("warping-in");
@@ -68,9 +71,9 @@ function renderHub() {
               <span class="pink">●</span>
             </div>
             <div class="info-row"><span class="k">Name</span><span class="v">Hakim Redjem</span></div>
-            <div class="info-row"><span class="k">Role</span><span class="v">${esc(t(h.role)).slice(0,18)}</span></div>
+            <div class="info-row"><span class="k">Role</span><span class="v">${esc(t(h.role))}</span></div>
             <div class="info-row"><span class="k">Loc.</span><span class="v pink">Toulouse</span></div>
-            <div class="info-row"><span class="k">Born</span><span class="v">02 MAR 2002</span></div>
+            <div class="info-row"><span class="k">Born</span><span class="v">13 NOV 2002</span></div>
             <div class="info-row"><span class="k">Status</span><span class="v acid">Open To Work</span></div>
             <div class="info-row"><span class="k">Mode</span><span class="v">Build / Ship</span></div>
           </div>
@@ -108,15 +111,12 @@ function renderHub() {
           <div class="hub-headline">
             <div class="hub-kicker">
               <span class="pink">▸</span>
-              <span>HAKIM/OS</span>
+              <span>HAKIM/PORTFOLIO</span>
               <span class="acid">v.3.0_</span>
-              <span>${STATE.lang === "fr" ? "BOOTÉ" : "BOOTED"}</span>
             </div>
             <h1 class="hub-name" data-text="HAKIM REDJEM">HAKIM REDJEM</h1>
             <div class="hub-tag">
               <span>${esc(t(h.role))}</span>
-              <span class="pink"> // </span>
-              <span>${STATE.lang === "fr" ? "BIENVENUE_DANS_LA_BROUME" : "WELCOME_TO_THE_HAZE"}</span>
             </div>
           </div>
 
@@ -138,8 +138,8 @@ function renderHub() {
           </div>
 
           <div class="apps">
-            ${appSticker("01", "experience", i18n.nav.experience[STATE.lang], STATE.lang === "fr" ? "3 monolithes" : "3 monoliths", "experience")}
-            ${appSticker("02", "projects",   i18n.nav.projects[STATE.lang],   STATE.lang === "fr" ? "6 éclats"        : "6 shards",     "projects")}
+            ${appSticker("01", "experience", i18n.nav.experience[STATE.lang], `${i18n.experience.items.length} ${STATE.lang === "fr" ? "monolithes" : "monoliths"}`, "experience")}
+            ${appSticker("02", "projects",   i18n.nav.projects[STATE.lang],   `${i18n.projects.items.length} ${STATE.lang === "fr" ? "éclats" : "shards"}`, "projects")}
             ${appSticker("03", "skills",     i18n.nav.skills[STATE.lang],     STATE.lang === "fr" ? "pile complète"   : "full stack",   "skills")}
             ${appSticker("04", "education",  i18n.nav.education[STATE.lang],  STATE.lang === "fr" ? "FR // JP"         : "FR // JP",     "education")}
           </div>
@@ -148,25 +148,9 @@ function renderHub() {
         <!-- RIGHT: signal + ascii + ticker -->
         <aside>
           <div class="info-card">
-            <div class="info-head"><span>// FEED_NOW</span><span class="pink">LIVE</span></div>
-            <div class="info-row"><span class="k"><span class="blink-dot"></span>STREAM</span><span class="v acid">ACTIVE</span></div>
-            <div class="info-row"><span class="k">LAT</span><span class="v">43.6047 N</span></div>
-            <div class="info-row"><span class="k">LON</span><span class="v">+001.4442 E</span></div>
-            <div class="info-row"><span class="k">TZ</span><span class="v">+1:00 GMT</span></div>
-            <div class="info-row"><span class="k">UA</span><span class="v">HAKIM/3.0</span></div>
-            <div class="info-row"><span class="k">CPU</span><span class="v">0.62</span></div>
-          </div>
-
-          <div class="info-card">
-            <div class="lab-tag">SCAN_ARCHIVE</div>
-            <div class="ascii-frame">${asciiPortrait()}</div>
-          </div>
-
-          <div class="info-card">
             <div class="info-head"><span>// NOW</span><span>↘</span></div>
-            <div class="info-row"><span class="k">${STATE.lang==="fr"?"Lit":"Reading"}</span><span class="v">Pattern Lang.</span></div>
-            <div class="info-row"><span class="k">${STATE.lang==="fr"?"Joue":"Playing"}</span><span class="v">B.O.T.W.</span></div>
-            <div class="info-row"><span class="k">${STATE.lang==="fr"?"Build":"Building"}</span><span class="v pink">HAKIM/OS</span></div>
+            <div class="info-row"><span class="k">${STATE.lang==="fr"?"Joue":"Playing"}</span><span class="v" id="now-steam">${STATE.steamGame ? esc(STATE.steamGame) : "—"}</span></div>
+            <div class="info-row"><span class="k">${STATE.lang==="fr"?"Build":"Building"}</span><span class="v pink" id="now-github">${STATE.githubRepo ? esc(STATE.githubRepo) : "HAKIM/PORTFOLIO"}</span></div>
             <div class="info-row"><span class="k">${STATE.lang==="fr"?"Veut":"Wants"}</span><span class="v">go back to ⛩</span></div>
           </div>
         </aside>
@@ -329,7 +313,7 @@ function halftoneThumb(text, fg, bg) {
       <circle cx="220" cy="40" r="30" fill="${bg}"/>
       <rect width="320" height="130" fill="url(#ht-${slug(text)})" opacity="0.7"/>
       <text x="50%" y="55%" text-anchor="middle" font-family="Major Mono Display, monospace"
-            font-size="34" font-weight="800" fill="${fg}" style="paint-order:stroke" stroke="${bg}" stroke-width="6"
+            font-size="${fitFontSize(text, 34)}" font-weight="800" fill="${fg}" style="paint-order:stroke" stroke="${bg}" stroke-width="6"
             letter-spacing="0.02em">${esc(text)}</text>
     </svg>
   `;
@@ -351,7 +335,7 @@ function ditherThumb(text, fg, bg) {
       <rect width="320" height="130" fill="url(#grad-${slug(text)})"/>
       <rect width="320" height="130" fill="url(#dt-${slug(text)})" opacity="0.6"/>
       <text x="50%" y="60%" text-anchor="middle" font-family="Major Mono Display, monospace"
-            font-size="36" font-weight="800" fill="${fg}" letter-spacing="0.02em">${esc(text)}</text>
+            font-size="${fitFontSize(text, 36)}" font-weight="800" fill="${fg}" letter-spacing="0.02em">${esc(text)}</text>
     </svg>
   `;
 }
@@ -359,7 +343,7 @@ function rgbStackThumb(text) {
   return `
     <svg viewBox="0 0 320 130" preserveAspectRatio="xMidYMid slice">
       <rect width="320" height="130" fill="#F2EDDC"/>
-      <g font-family="Major Mono Display, monospace" font-size="44" font-weight="800" text-anchor="middle" letter-spacing="0.02em">
+      <g font-family="Major Mono Display, monospace" font-size="${fitFontSize(text, 44)}" font-weight="800" text-anchor="middle" letter-spacing="0.02em">
         <text x="160" y="80" fill="#FF1B8C" transform="translate(-5 2)">${esc(text)}</text>
         <text x="160" y="80" fill="#C7FF00" transform="translate(5 -2)">${esc(text)}</text>
         <text x="160" y="80" fill="#0A0A0A">${esc(text)}</text>
@@ -391,34 +375,11 @@ function mapThumb(text) {
   `;
 }
 function slug(s){ return String(s).replace(/[^a-z0-9]/gi,"").toLowerCase().slice(0,16) || "x"; }
-
-// =================================================================
-// ASCII portrait
-// =================================================================
-function asciiPortrait() {
-  return [
-    "                              ",
-    "           .,**,.             ",
-    "       .::ooOO@@@Oo:.         ",
-    "      :oO@@@@@@@@@@Oo:        ",
-    "    .:O@@@@@@@@@@@@@@O:.      ",
-    "   :O@@@@@@@##@@@@@@@@@O:     ",
-    "  :@@@@@@@##  ##@@@@@@@@@:    ",
-    " :@@@@@@##  oo  ##@@@@@@@@:   ",
-    " :@@@@@@##      ##@@@@@@@@:   ",
-    "  :@@@@@##      ##@@@@@@@:    ",
-    "   :@@@@##  --  ##@@@@@@:     ",
-    "    :O@@@@######@@@@@@O:      ",
-    "      :O@@@@@@@@@@@@O:        ",
-    "        :oO@@@@@@Oo:          ",
-    "       *::O@@@@O::*           ",
-    "      ##  :OOO:  ##           ",
-    "    ####    :    ####         ",
-    "                              ",
-    "    HAKIM_3.0 // SCAN_001     ",
-    "    TYPE: HUMAN/v22           ",
-    "    UPDATED: 02 MAR 2026      ",
-  ].join("\n");
+// Shrinks font-size so long project names never overflow the 320-wide thumb viewBox.
+// factor 0.76 = measured glyph advance for Major Mono Display (em/char, incl. spaces).
+function fitFontSize(text, base, { budget = 270, min = 12, factor = 0.76 } = {}) {
+  const est = budget / (Math.max(String(text).length, 1) * factor);
+  return Math.round(Math.max(min, Math.min(base, est)));
 }
 
 // =================================================================
@@ -500,8 +461,8 @@ function expPortrait(i) {
 // =================================================================
 function renderProjects() {
   const p = i18n.projects;
-  const layout = ["lg", "md", "sm", "sm", "sm", "wd"];
-  const treatments = ["halftone-pink", "dither-bw", "rgb-stack", "halftone-acid", "threshold", "halftone-mixed"];
+  const layout = ["lg", "md", "sm", "sm", "sm", "sm", "wd"];
+  const treatments = ["halftone-pink", "dither-bw", "rgb-stack", "halftone-acid", "threshold", "halftone-mixed", "dither-bw"];
   $("#screen-projects").innerHTML = `
     <div class="section">
       <header class="section-head">
@@ -570,7 +531,7 @@ function thresholdThumb(text) {
         <rect x="180" y="80" width="120" height="40" fill="#0A0A0A"/>
       </g>
       <text x="50%" y="60%" text-anchor="middle" font-family="Major Mono Display, monospace"
-        font-size="32" font-weight="800" fill="#FF1B8C" letter-spacing="0.02em">${esc(text)}</text>
+        font-size="${fitFontSize(text, 32)}" font-weight="800" fill="#FF1B8C" letter-spacing="0.02em">${esc(text)}</text>
     </svg>
   `;
 }
@@ -587,7 +548,7 @@ function mixedThumb(text) {
       <rect x="0" y="0" width="160" height="130" fill="url(#mx-${slug(text)})"/>
       <rect x="160" y="0" width="160" height="130" fill="#C7FF00"/>
       <text x="50%" y="55%" text-anchor="middle" font-family="Major Mono Display, monospace"
-        font-size="34" font-weight="800" fill="#0A0A0A" letter-spacing="0.02em" style="paint-order: stroke" stroke="#F2EDDC" stroke-width="4">${esc(text)}</text>
+        font-size="${fitFontSize(text, 34)}" font-weight="800" fill="#0A0A0A" letter-spacing="0.02em" style="paint-order: stroke" stroke="#F2EDDC" stroke-width="4">${esc(text)}</text>
     </svg>
   `;
 }
@@ -635,6 +596,10 @@ function renderSkills() {
 // =================================================================
 function renderEducation() {
   const e = i18n.education;
+  if (eduMapInstance) {
+    eduMapInstance.remove();
+    eduMapInstance = null;
+  }
   $("#screen-education").innerHTML = `
     <div class="section">
       <header class="section-head">
@@ -652,10 +617,8 @@ function renderEducation() {
         </div>
       </header>
       <div class="edu-wrap">
-        <div class="edu-map">${asciiMap()}
-          <div class="pin" style="left: 22%; top: 44%;"><div class="dot"></div><div class="lab">BERGERAC</div></div>
-          <div class="pin" style="left: 27%; top: 50%;"><div class="dot"></div><div class="lab">TOULOUSE</div></div>
-          <div class="pin" style="left: 76%; top: 48%;"><div class="dot"></div><div class="lab">TOKYO ⛩</div></div>
+        <div class="edu-map">
+          <div id="edu-leaflet"></div>
         </div>
         <div class="edu-list">
           ${e.items.map((it,i)=>`
@@ -677,29 +640,42 @@ function renderEducation() {
   $$("#screen-education .edu-entry").forEach(le => le.addEventListener("click", () => le.classList.toggle("open")));
 }
 
-function asciiMap() {
-  return [
-    "                                                                                ",
-    "       .--.   .--..--                                                           ",
-    "      /    `_/    .                  .--.                                      ",
-    "     .             `--._     .--.   /    `--.                                  ",
-    "     |   N. AMERICA    `---.'    `-'        `-.                                ",
-    "      `-.                                      `.    .---.       .            ",
-    "         `-.        .---.   .--.--.             `.--'     `.    .--.          ",
-    "            `.    .'     `-'  EUROPE `..        .'           `--'    `--.     ",
-    "              `--'  ATL.            ASIA  `--.'                       `.     ",
-    "                        \\__.--.   /                                    `.    ",
-    "                           .---.--'  .--.    .---..--..--.                `.  ",
-    "                          /        _'    `--'    '         `-..__.        | ",
-    "                         .  AFRICA |                              `-._   _' ",
-    "                         |          `.   .__                          `-'   ",
-    "                          `.          `-'   `.                              ",
-    "                            `--.            .--..                           ",
-    "                                 `-.       /     `-.    OCEANIA            ",
-    "                                    `.    /         `-.                    ",
-    "                                      `--'             `--.                ",
-    "                                                                            ",
-  ].join("\n");
+// =================================================================
+// EDUCATION MAP — real Leaflet/OpenStreetMap, real coordinates
+// =================================================================
+const EDU_POINTS = [
+  { name: "BERGERAC",  lat: 44.8503, lon: 0.4814 },
+  { name: "TOULOUSE",  lat: 43.6047, lon: 1.4442 },
+  { name: "TOKYO ⛩",   lat: 35.6762, lon: 139.6503 },
+];
+let eduMapInstance = null;
+
+function initEduMap() {
+  const el = $("#edu-leaflet");
+  if (!el || typeof L === "undefined") return;
+
+  if (!eduMapInstance) {
+    eduMapInstance = L.map(el, {
+      scrollWheelZoom: false,
+      attributionControl: true,
+    });
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      maxZoom: 18,
+      attribution: "&copy; OpenStreetMap",
+    }).addTo(eduMapInstance);
+
+    EDU_POINTS.forEach(p => {
+      const icon = L.divIcon({
+        className: "edu-pin",
+        html: `<div class="dot"></div><div class="lab">${esc(p.name)}</div>`,
+        iconSize: [0, 0],
+      });
+      L.marker([p.lat, p.lon], { icon }).addTo(eduMapInstance);
+    });
+  }
+
+  eduMapInstance.invalidateSize();
+  eduMapInstance.fitBounds(L.latLngBounds(EDU_POINTS.map(p => [p.lat, p.lon])), { padding: [36, 36] });
 }
 
 // =================================================================
@@ -721,6 +697,32 @@ function renderAll() {
   renderEducation();
 }
 
+async function loadSteamStat() {
+  try {
+    const res = await fetch("./now-playing.json", { cache: "no-store" });
+    if (!res.ok) throw new Error("no data yet");
+    const data = await res.json();
+    if (data?.game) STATE.steamGame = data.game;
+  } catch {
+    // keep fallback
+  }
+  const el = $("#now-steam");
+  if (el) el.textContent = STATE.steamGame || "—";
+}
+
+async function loadGithubStat() {
+  try {
+    const res = await fetch("https://api.github.com/users/VulkreoN/repos?sort=pushed&direction=desc&per_page=1");
+    if (!res.ok) throw new Error("bad status");
+    const [repo] = await res.json();
+    if (repo?.name) STATE.githubRepo = repo.name;
+  } catch {
+    // keep fallback
+  }
+  const el = $("#now-github");
+  if (el) el.textContent = STATE.githubRepo || "HAKIM/PORTFOLIO";
+}
+
 function startClock() {
   const tick = () => {
     const d = new Date();
@@ -733,6 +735,16 @@ function startClock() {
 // --- boot ---
 renderAll();
 startClock();
+loadGithubStat();
+loadSteamStat();
+
+let resizeTimer;
+window.addEventListener("resize", () => {
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(() => {
+    if (STATE.screen === "education") initEduMap();
+  }, 120);
+});
 
 $("#lang-en").addEventListener("click", () => setLang("en"));
 $("#lang-fr").addEventListener("click", () => setLang("fr"));

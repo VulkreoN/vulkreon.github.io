@@ -83,6 +83,17 @@ export const i18n = {
     title: { fr: "PROJETS",  en: "PROJECTS" },
     items: [
       {
+        name: "EVA Scrim Manager",
+        year: "2024",
+        award:{ fr: "En production", en: "In production" },
+        desc: {
+          fr: "Plateforme multi-tenant de gestion de scrims pour les communautés EVA France : bot Discord (slash commands, auto-modération, rappels) + dashboard web (React + API Express) avec authentification Discord OAuth2. Chaque association dispose de sa propre base de données isolée, le tout géré depuis une seule instance applicative.",
+          en: "Multi-tenant scrim management platform for EVA France communities: Discord bot (slash commands, auto-mod, reminders) + web dashboard (React + Express API) with Discord OAuth2 authentication. Each association gets its own isolated database, all served from a single application instance."
+        },
+        tags: ["TypeScript", "Node.js", "Express", "React", "MongoDB", "Discord.js", "OAuth2"],
+        link: "https://toulouse.evascrim.com"
+      },
+      {
         name: "Laval Game Jam",
         year: "2022",
         award:{ fr: "1ᵉʳ prix", en: "1st prize" },
