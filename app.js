@@ -169,10 +169,10 @@ const I18N = {
   },
   education: {
     title: { fr: "Formation", en: "Education" },
-    lead:  { fr: "Cinq ans de pédagogie par projets, un semestre à Tokyo, et un diplôme d'ingénieur en cours de validation.", en: "Five years of project-based learning, a semester in Tokyo, and an engineering degree being validated." },
+    lead:  { fr: "Un Bachelor EPITECH en poche, cinq ans de pédagogie par projets, un an à Tokyo, et un diplôme d'ingénieur en cours de validation.", en: "An EPITECH Bachelor's degree, five years of project-based learning, a year in Tokyo, and an engineering degree being validated." },
     items: [
       { school: "CESI", period: { fr: "En cours", en: "In progress" }, degree: { fr: "Diplôme d'ingénieur par VAE", en: "Engineering degree through VAE" }, body: { fr: "Validation des acquis de l'expérience.", en: "Validation of prior experience." }, current: true },
-      { school: "EPITECH Toulouse", period: "2020 – 2025", degree: { fr: "Bachelor + cycle ingénieur (5ᵉ année)", en: "Bachelor + engineering cycle (5th year)" }, body: { fr: "Cursus intensif par projets : C, C++, systèmes, réseau, puis web, mobile et IA.", en: "Intensive project-based programme: C, C++, systems, networking, then web, mobile and AI." } },
+      { school: "EPITECH Toulouse", period: "2020 – 2025", degree: { fr: "Bachelor obtenu + cycle ingénieur (5ᵉ année)", en: "Bachelor's degree + engineering cycle (5th year)" }, body: { fr: "Cursus intensif par projets : C, C++, systèmes, réseau, puis web, mobile et IA.", en: "Intensive project-based programme: C, C++, systems, networking, then web, mobile and AI." } },
       { school: "Shibaura Institute of Technology, Tokyo", period: "2023 – 2024", degree: { fr: "Échange universitaire", en: "University exchange" }, body: { fr: "Un an au Japon : cours d'ingénierie en anglais, immersion linguistique.", en: "A year in Japan: engineering courses in English, language immersion." } },
     ],
   },
