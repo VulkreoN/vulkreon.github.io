@@ -1,80 +1,174 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfolio Hakim REDJEM</title>
+  <title>Hakim Redjem — Développeur Full-Stack / IA</title>
+  <meta name="description" content="Hakim Redjem, développeur Full-Stack / IA à Toulouse. EPITECH, R&D IA chez Medinbox, créateur d'EVA Scrim Manager. Disponible immédiatement." />
+  <link rel="canonical" href="https://vulkreon.github.io/" />
+  <meta name="theme-color" content="#EEF0F4" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#15171C" media="(prefers-color-scheme: dark)" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://vulkreon.github.io/" />
+  <meta property="og:title" content="Hakim Redjem — Développeur Full-Stack / IA" />
+  <meta property="og:description" content="EPITECH, R&D IA chez Medinbox, créateur d'EVA Scrim Manager. Disponible immédiatement, partout." />
+  <meta property="og:image" content="https://vulkreon.github.io/og.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="fr_FR" />
+  <meta property="og:locale:alternate" content="en_US" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Hakim Redjem — Développeur Full-Stack / IA" />
+  <meta name="twitter:description" content="EPITECH, R&D IA chez Medinbox, créateur d'EVA Scrim Manager. Disponible immédiatement, partout." />
+  <meta name="twitter:image" content="https://vulkreon.github.io/og.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="v3-styles.css" />
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,300..800&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <script>(function(){try{var th=localStorage.getItem("theme");if(th==="dark"||th==="light")document.documentElement.dataset.theme=th;}catch(e){}})();</script>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%233F3CFF'/><text x='16' y='22' font-family='sans-serif' font-weight='800' font-size='18' text-anchor='middle' fill='white'>H</text></svg>" />
 </head>
 <body>
 
-  <!-- SVG filter library used by warp animation -->
-  <svg class="fxlib" aria-hidden="true">
-    <defs>
-      <filter id="displace-soft" x="0" y="0" width="100%" height="100%">
-        <feTurbulence type="fractalNoise" baseFrequency="0.012 0.025" numOctaves="2" seed="3"/>
-        <feDisplacementMap in="SourceGraphic" scale="22"/>
-      </filter>
-    </defs>
-  </svg>
-
-  <!-- Brand mark (top-left) -->
-  <div class="brand-top">
-    <div class="brand-blob"></div>
-    <div class="brand-text">
-      <div class="brand-name">HAKIM / PORTFOLIO</div>
-      <div class="brand-sub">v.3.0</div>
-    </div>
-  </div>
-
-  <!-- Top-right: clock + lang -->
-  <div class="topright">
-    <div class="tr-clock" id="clock">00:00:00</div>
-    <div class="tr-lang">
-      <button id="lang-en" class="active">EN</button>
-      <button id="lang-fr">FR</button>
-    </div>
-  </div>
-
-  <!-- Warp overlays -->
-  <div id="warp" class="warp"></div>
-  <div id="warp-scan" class="warp-scan"></div>
-  <div id="warp-flash" class="warp-flash"></div>
-
-  <!-- Screens -->
-  <main>
-    <section id="screen-hub"        class="screen active" data-screen-label="01 Hub"></section>
-    <section id="screen-experience" class="screen"        data-screen-label="02 Experience"></section>
-    <section id="screen-projects"   class="screen"        data-screen-label="03 Projects"></section>
-    <section id="screen-skills"     class="screen"        data-screen-label="04 Skills"></section>
-    <section id="screen-education"  class="screen"        data-screen-label="05 Education"></section>
-  </main>
-
-  <!-- Persistent dock — anywhere → anywhere -->
-  <nav class="dock" aria-label="Navigation">
-    <button class="dock-btn active" data-target="hub">
-      <span class="glyph"></span><span>HUB</span>
-    </button>
-    <button class="dock-btn" data-target="experience">
-      <span class="glyph"></span><span>EXP</span>
-    </button>
-    <button class="dock-btn" data-target="projects">
-      <span class="glyph"></span><span>PROJ</span>
-    </button>
-    <button class="dock-btn" data-target="skills">
-      <span class="glyph"></span><span>SKILL</span>
-    </button>
-    <button class="dock-btn" data-target="education">
-      <span class="glyph"></span><span>EDU</span>
-    </button>
+<header class="topbar">
+  <a href="#top" class="brand" aria-label="Hakim Redjem">
+    <span class="brand-mark">H</span>
+    <span class="brand-name">Hakim Redjem</span>
+  </a>
+  <nav class="nav" aria-label="Navigation">
+    <a href="#experience" data-i18n="nav.experience"></a>
+    <a href="#projects" data-i18n="nav.projects"></a>
+    <a href="#skills" data-i18n="nav.skills"></a>
+    <a href="#education" data-i18n="nav.education"></a>
+    <a href="#contact" class="nav-cta" data-i18n="nav.contact"></a>
   </nav>
+  <div class="topbar-right">
+    <div class="lang" role="group" aria-label="Langue">
+      <button type="button" data-lang="fr" class="is-active">FR</button>
+      <button type="button" data-lang="en">EN</button>
+    </div>
+    <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Changer de thème">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+    </button>
+  </div>
+</header>
 
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-  <script type="module" src="v3-app.js"></script>
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <p class="hero-kicker">
+      <span class="status-dot" aria-hidden="true"></span>
+      <span data-i18n="hero.available"></span>
+    </p>
+    <h1 class="hero-name" aria-label="Hakim Redjem">
+      <span class="hero-line"><span class="w">Hakim</span></span>
+      <span class="hero-line"><span class="w">Redjem</span></span>
+    </h1>
+    <div class="hero-foot">
+      <p class="hero-role" data-i18n="hero.role"></p>
+      <p class="hero-pitch" data-i18n="hero.pitch"></p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#projects" data-i18n="hero.cta_projects"></a>
+        <a class="btn btn-ghost" id="cv-link" href="CV_Hakim_REDJEM_Fullstack_IA_FR.pdf" download data-i18n="hero.cta_cv"></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BENTO ============ -->
+  <section class="bento" aria-label="En bref">
+    <div class="tile tile-location">
+      <span class="tile-label" data-i18n="bento.location_label"></span>
+      <span class="tile-value">Toulouse</span>
+      <span class="tile-sub" data-i18n="bento.location_sub"></span>
+    </div>
+    <div class="tile tile-stack">
+      <span class="tile-label" data-i18n="bento.stack_label"></span>
+      <ul class="stack-list">
+        <li>TypeScript</li><li>C# / .NET</li><li>Python</li><li>React</li><li>Angular</li><li>Node.js</li><li>MongoDB</li><li>Docker</li>
+      </ul>
+    </div>
+    <div class="tile tile-langs">
+      <span class="tile-label" data-i18n="bento.langs_label"></span>
+      <ul class="langs">
+        <li><b data-i18n="bento.fr"></b><span data-i18n="bento.fr_level"></span></li>
+        <li><b data-i18n="bento.en"></b><span>TOEIC 920</span></li>
+        <li><b data-i18n="bento.es"></b><span>B2</span></li>
+        <li><b data-i18n="bento.ja"></b><span data-i18n="bento.ja_level"></span></li>
+      </ul>
+    </div>
+    <div class="tile tile-now">
+      <span class="tile-label" data-i18n="bento.mob_label"></span>
+      <span class="tile-value tile-now-value" data-i18n="bento.mob_value"></span>
+      <span class="tile-sub" data-i18n="bento.mob_sub"></span>
+    </div>
+    <div class="tile tile-ai">
+      <span class="tile-label" data-i18n="bento.ai_label"></span>
+      <span class="tile-value" data-i18n="bento.ai_value"></span>
+      <span class="tile-sub" data-i18n="bento.ai_sub"></span>
+    </div>
+    <div class="tile tile-codingame">
+      <span class="tile-label">CodinGame</span>
+      <span class="tile-value" data-i18n="bento.cg_value"></span>
+      <span class="tile-sub">Python · C · C++ · Java · TS · JS</span>
+    </div>
+  </section>
+
+  <!-- ============ EXPERIENCE ============ -->
+  <section class="section" id="experience">
+    <div class="section-head">
+      <h2 data-i18n="experience.title"></h2>
+      <p class="section-lead" data-i18n="experience.lead"></p>
+    </div>
+    <ol class="timeline" id="experience-list"></ol>
+  </section>
+
+  <!-- ============ PROJECTS ============ -->
+  <section class="section" id="projects">
+    <div class="section-head">
+      <h2 data-i18n="projects.title"></h2>
+      <p class="section-lead" data-i18n="projects.lead"></p>
+    </div>
+    <div class="projects" id="projects-list"></div>
+  </section>
+
+  <!-- ============ SKILLS ============ -->
+  <section class="section" id="skills">
+    <div class="section-head">
+      <h2 data-i18n="skills.title"></h2>
+      <p class="section-lead" data-i18n="skills.lead"></p>
+    </div>
+    <div class="skills" id="skills-list"></div>
+  </section>
+
+  <!-- ============ EDUCATION ============ -->
+  <section class="section" id="education">
+    <div class="section-head">
+      <h2 data-i18n="education.title"></h2>
+      <p class="section-lead" data-i18n="education.lead"></p>
+    </div>
+    <ul class="edu" id="education-list"></ul>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section class="contact" id="contact">
+    <h2 data-i18n="contact.title"></h2>
+    <p data-i18n="contact.lead"></p>
+    <a class="contact-mail" href="mailto:hakim.redjem@epitech.eu">hakim.redjem@epitech.eu</a>
+    <div class="contact-links">
+      <a href="https://github.com/vulkreon" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/hakim-redjem" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="tel:+33789589518">+33 7 89 58 95 18</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <span>© <span id="year"></span> Hakim Redjem</span>
+</footer>
+
+<script src="app.js"></script>
 </body>
 </html>
